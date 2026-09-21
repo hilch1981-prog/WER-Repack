@@ -1,5 +1,22 @@
 # NVIDIA API 키 발급 및 입력 — 외부 LLM 봇 대화 필수
 
+> [!WARNING]
+> **🟨 WER 핵심 기능 — NVIDIA LLM 봇 대화를 꼭 사용해 보세요!**
+>
+> **공개 채널·귓속말·파티·공대·길드에서 봇과 자연어로 대화하는 기능을 꼭 체험해 보세요.** 본인 NVIDIA API 키를 발급·입력해야 외부 LLM 대화가 작동합니다. AI 추론은 NVIDIA 클라우드에서 처리하므로, 이 기능을 위해 로컬에 대형 모델이나 별도 추론용 GPU를 준비할 필요가 없습니다.
+>
+> **개발·시험용 무료 API로 시작할 수 있습니다.** NVIDIA는 현재 기본 모델의 무료 엔드포인트를 제공합니다. 무료 제공은 무제한 동시 요청이나 상시 서버 운영 보장이 아니며, 계정·모델별 한도와 약관이 적용됩니다. 운영용 서비스는 별도 이용 조건을 확인하세요.
+>
+> **[지금 NVIDIA 키 발급·입력하고 봇과 대화해 보기](https://github.com/hilch1981-prog/WER-Repack/blob/main/docs/NVIDIA_API.md)** · [공식 무료 모델 안내](https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b) · [NVIDIA 이용 약관](https://assets.ngc.nvidia.com/products/api-catalog/legal/NVIDIA%20API%20Trial%20Terms%20of%20Service.pdf)
+
+## 무료 제공과 실제 운영의 차이
+
+2026-09-21 확인 기준 [NVIDIA NIM 개발자 안내](https://developer.nvidia.com/nim)는 개발·시험용 무료 접근을 제공하며, 기본 모델 페이지도 Free Endpoint를 표시합니다. [시험용 약관](https://assets.ngc.nvidia.com/products/api-catalog/legal/NVIDIA%20API%20Trial%20Terms%20of%20Service.pdf) 1.1~1.4는 이용 제한 및 시험/운영 용도를 구분합니다. 무료 시험 API가 공개 게임 서버의 운영용 이용까지 허용한다고 가정하지 마세요. 계정에서 동의하는 최신 약관과 필요한 운영용 계약을 확인해야 합니다.
+
+WER의 2,000봇 목표 수량은 API 처리량 보장이 아닙니다. 봇의 대화 빈도·동시 요청·모델 응답시간에 따라 429나 시간 초과가 발생할 수 있습니다. 먼저 소규모 대화 시험으로 응답시간과 실패율을 확인하고 빈도를 조정하세요. 이 배포에서 계정별 한도나 2,000봇 LLM 부하 시험을 검증하지 않았습니다.
+
+특정 GPU 수량(예: RTX 5080 24개)과 동등한 성능이라는 공식 비교 근거는 확인하지 못했습니다. 클라우드에서 대형 모델을 사용한다는 사실을 사용자에게 그만큼의 GPU가 전용 할당되거나 동일한 처리량을 보장한다는 의미로 해석하면 안 됩니다.
+
 **LLM 봇 대화를 사용하려면 본인의 유효한 NVIDIA API 키를 발급받아 입력해야 합니다.** 리팩에는 키가 없으며 제작자가 공유 키를 제공하지 않습니다. 기본 서버 기동·일반 봇 AI까지 NVIDIA 키가 필수인 것은 아닙니다.
 
 이 안내는 NVIDIA 호스팅 API를 사용합니다. 내 PC에서 Ollama나 대형 AI 모델을 실행하는 방식이 아니며, 독립 `mod-ollama-chat` 모듈은 이 리팩에서 빌드 제외 상태입니다.

@@ -1,5 +1,14 @@
 # WER REPACK VER1.1.0
 
+> [!WARNING]
+> **🟨 WER 핵심 기능 — NVIDIA LLM 봇 대화를 꼭 사용해 보세요!**
+>
+> **공개 채널·귓속말·파티·공대·길드에서 봇과 자연어로 대화하는 기능을 꼭 체험해 보세요.** 본인 NVIDIA API 키를 발급·입력해야 외부 LLM 대화가 작동합니다. AI 추론은 NVIDIA 클라우드에서 처리하므로, 이 기능을 위해 로컬에 대형 모델이나 별도 추론용 GPU를 준비할 필요가 없습니다.
+>
+> **개발·시험용 무료 API로 시작할 수 있습니다.** NVIDIA는 현재 기본 모델의 무료 엔드포인트를 제공합니다. 무료 제공은 무제한 동시 요청이나 상시 서버 운영 보장이 아니며, 계정·모델별 한도와 약관이 적용됩니다. 운영용 서비스는 별도 이용 조건을 확인하세요.
+>
+> **[지금 NVIDIA 키 발급·입력하고 봇과 대화해 보기](https://github.com/hilch1981-prog/WER-Repack/blob/main/docs/NVIDIA_API.md)** · [공식 무료 모델 안내](https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b) · [NVIDIA 이용 약관](https://assets.ngc.nvidia.com/products/api-catalog/legal/NVIDIA%20API%20Trial%20Terms%20of%20Service.pdf)
+
 ![와우 에뮬레이터 연구소 — WOW Emulator Research (WER)](docs/images/wer-research-banner.png)
 
 *사용자가 제공한 연구소 소개 이미지입니다. 이미지의 확장팩 카드와 별개로 이 배포본의 대상은 리치왕 3.3.5a입니다.*
