@@ -11,7 +11,7 @@ AzerothCore, Playerbots, WOW Legends 기반 소스와 여러 커뮤니티 모듈
 
 ## 다운로드와 필수 안내
 
-- **게임 서버 실행용:** [v1.1.0 Releases](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)의 `WER_REPACK_VER.1.1.0.zip.001`과 `.002`를 **둘 다** 받으세요. GitHub의 자동 생성 **Source code ZIP은 실행용 리팩이 아닙니다.**
+- **게임 서버 실행용:** [v1.1.0 Releases](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)의 **`WER_REPACK_VER.1.1.0.zip` 하나**를 받아 해제하세요. 선택용 분할 파일 `.zip.001`/`.002`도 같은 내용입니다. GitHub의 자동 생성 **Source code ZIP은 실행용 리팩이 아닙니다.**
 - **소스:** 이 저장소의 [source/WER_Source](source/WER_Source) 또는 Releases의 `WER_Source.zip`. 소스는 배포 실행파일에 대응하는 통합 스냅샷입니다.
 - **설치/접속/종료:** [설치 및 실행 가이드](docs/INSTALL.md).
 - **LLM 봇 대화를 사용하려면 NVIDIA API 키 발급·입력이 필수입니다:** [NVIDIA API 설정 가이드](docs/NVIDIA_API.md). API 키는 배포하지 않습니다. 키 없이도 기본 서버·일반 봇 기능은 실행할 수 있지만 외부 LLM 대화는 사용할 수 없습니다.

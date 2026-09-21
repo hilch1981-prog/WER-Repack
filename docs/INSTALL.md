@@ -1,6 +1,10 @@
 # 설치 · 실행 · 접속
 
-## 1. 실행용 파일 받기
+## 1. 실행용 파일 받기 — ZIP 하나면 됩니다
+
+가장 간단한 방법은 [v1.1.0 릴리즈](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)의 **`WER_REPACK_VER.1.1.0.zip` 하나를 받아 일반 ZIP처럼 압축 해제**하는 것입니다. `SHA256SUMS.txt`로 해시를 비교할 수 있습니다. 재압축으로 GitHub 파일 크기 제한 안에 들어왔습니다. 아래 분할 파일은 다운로드를 나누고 싶은 분을 위한 대안이며 단일 ZIP과 내용이 같습니다.
+
+### 선택: 분할 파일로 받기
 
 [v1.1.0 릴리즈](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)에서 다음 파일을 같은 폴더에 받습니다.
 
