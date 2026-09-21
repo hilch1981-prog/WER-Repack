@@ -17,6 +17,21 @@ AzerothCore, Playerbots, WOW Legends 기반 소스와 여러 커뮤니티 모듈
 - **LLM 봇 대화를 사용하려면 NVIDIA API 키 발급·입력이 필수입니다:** [NVIDIA API 설정 가이드](docs/NVIDIA_API.md). API 키는 배포하지 않습니다. 키 없이도 기본 서버·일반 봇 기능은 실행할 수 있지만 외부 LLM 대화는 사용할 수 없습니다.
 - **처음 설치용입니다.** 기존 서버 폴더나 `mysql/data`에 덮어쓰지 마세요. 운영 데이터 이관은 별도 작업입니다.
 
+## GM MINI BAR — GM용 클라이언트 애드온
+
+WER의 기반 코어에 맞는 **리치왕 3.3.5a (12340) / AzerothCore용 GM MINI BAR v1.0.0**을 연결합니다. MoP·Turtle용은 설치하지 마세요.
+
+- [GM MINI BAR GitHub 저장소](https://github.com/hilch1981-prog/azerothcore-gm-addon)
+- [GM MINI BAR v1.0.0 릴리즈](https://github.com/hilch1981-prog/azerothcore-gm-addon/releases/tag/v1.0.0)
+- [설치용 ZIP 바로 다운로드](https://github.com/hilch1981-prog/azerothcore-gm-addon/releases/download/v1.0.0/GMminibar_AzerothCore_3.3.5a_v1.0.0.zip)
+- [한국어 기능·사용 설명](https://github.com/hilch1981-prog/azerothcore-gm-addon/blob/main/README.ko.md)
+
+게임을 종료한 뒤 설치 ZIP의 **GMminibar** 폴더를 클라이언트의 `Interface/AddOns`에 넣습니다. 최종 경로는 `Interface/AddOns/GMminibar/GMminibar.toc`입니다. 애드온 목록에서 활성화하고 **GM Menu** 또는 `/aaac`로 엽니다. 한국어 선택은 `/aaac locale koKR`입니다.
+
+GM 메뉴·아이템/주문 검색·순간이동·퀘스트 보조 등을 제공하며, GM 명령 실행에는 서버의 GM 권한이 필요합니다. **선택 설치하는 클라이언트 애드온으로, WER 서버 ZIP에 새로 동봉하거나 서버 모듈로 설치한 것이 아닙니다.** 별도 MPQ·DLL·SQL 설치는 필요하지 않습니다. 기존 같은 이름의 애드온은 백업 후 교체하고 중복 GM 애드온 충돌에 주의하세요.
+
+대상 클라이언트·코어와 공개 릴리즈는 확인했습니다. 원 애드온의 게임 검증은 별도 기반 리팩에서 수행된 범위이며, **WER 1.1.0에서 모든 명령·기능을 재검증했다는 뜻은 아닙니다.** [애드온 검증 범위](https://github.com/hilch1981-prog/azerothcore-gm-addon/blob/v1.0.0/docs/VALIDATION_KO.md)를 참고하세요.
+
 ## 실행은 3개만
 
 압축을 모두 푼 뒤 순서대로 더블클릭하세요.
