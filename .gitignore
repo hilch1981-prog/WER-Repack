@@ -1,0 +1,16 @@
+# Publication repository: never add live credentials, database data, or runtime logs.
+**/.env
+**/.env.*
+**/*.conf
+**/mysql/data/
+**/client.cnf
+**/*.pem
+**/*.key
+**/*.pdb
+**/*.log
+**/__pycache__/
+**/build/
+release-assets/
+*.zip
+*.zip.???
+

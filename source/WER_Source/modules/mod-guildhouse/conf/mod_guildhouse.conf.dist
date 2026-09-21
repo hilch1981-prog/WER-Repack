@@ -1,0 +1,29 @@
+[worldserver]
+
+# 길드하우스 구매 비용. 코퍼 단위(10000코퍼=1골드). 기본값 1000골드.
+CostGuildHouse = 10000000
+# 우편함 비용: 50골드.
+GuildHouseMailbox = 500000
+# 여관주인 비용: 100골드.
+GuildHouseInnKeeper = 1000000
+# 은행원 비용: 100골드.
+GuildHouseBank = 1000000
+# 경매인 비용: 100골드.
+GuildHouseAuctioneer = 1000000
+# 직업 상급자 1명당 비용: 100골드.
+GuildHouseTrainerCost = 1000000
+# 상인 비용: 50골드.
+GuildHouseVendor = 500000
+# 시설/장식 오브젝트 비용: 50골드.
+GuildHouseObject = 500000
+# 차원문 비용: 100골드.
+GuildHousePortal = 1000000
+# 전문/보조 기술 교관 비용: 50골드.
+GuildHouseProf = 500000
+# 영혼의 치유사 비용: 10골드.
+GuildHouseSpirit = 100000
+# 시설 구매가 가능한 최하위 길드 등급. 숫자가 작을수록 높은 등급.
+# 기본 등급: 0 길드장, 1 장교, 2 정예병, 3 일반회원, 4 신입회원.
+GuildHouseBuyRank = 4
+# 길드하우스 판매가 가능한 최하위 등급. 기본값 0(길드장만).
+GuildHouseSellRank = 0

@@ -1,0 +1,57 @@
+[worldserver]
+
+#
+#   mod-playerbot-artisans
+#   제작 봇은 실제로 배운 제작법을 채팅으로 안내합니다.
+#   봇이 습득한 제작법만 사용하므로 안내 내용은 숙련도와 레벨에 맞춰집니다.
+#   봇의 레벨과 기술 습득은 플레이어봇 생성기가 처리하며, 이 모듈은
+#   봇이 실제 세계의 구성원처럼 제작 활동을 안내하도록 돕습니다.
+#
+
+#   모듈 사용 여부. 기본값: 1
+PlayerbotArtisans.Enable = 1
+
+#   제작 안내 묶음 사이의 간격(초). 기본값: 45
+PlayerbotArtisans.TickSeconds = 45
+
+#   한 번에 게시할 안내 수. 거래 채널 도배를 막으려면 낮게 유지합니다. 기본값: 2
+PlayerbotArtisans.AdsPerTick = 2
+
+#   제작 안내에 필요한 최소 전문기술 숙련도. 기본값: 100
+PlayerbotArtisans.MinSkill = 100
+
+#   안내 하나에 표시할 제작법 수. 기본값: 2
+PlayerbotArtisans.AdvertiseCount = 2
+
+#   같은 봇이 다시 안내하기까지 기다릴 시간(초). 기본값: 900
+PlayerbotArtisans.PerBotCooldownSeconds = 900
+
+#   거래 채널에 안내합니다. 기본값: 1
+PlayerbotArtisans.UseTradeChannel = 1
+
+#   봇이 있는 지역의 공개 채널에도 안내합니다. 기본값: 0
+PlayerbotArtisans.UseGeneralChannel = 0
+
+#
+#   ---- v0.2 ----
+#
+
+#   단순한 글자 대신 클릭할 수 있는 아이템·마법부여 링크를 표시합니다.
+#   유저가 Shift 클릭하거나 툴팁으로 내용을 확인할 수 있습니다. 기본값: 1
+PlayerbotArtisans.UseItemLinks = 1
+
+#   안내한 봇에게 귓말을 보내면 전문기술과 제작법을 답하도록 합니다.
+#   제작 조건을 설명할 뿐, 이 답변 기능 자체가 주문을 접수하지는 않습니다.
+#   기본값: 1
+PlayerbotArtisans.AnswerWhispers = 1
+
+#   귓말 답변에 나열할 제작법 수. 기본값: 5
+PlayerbotArtisans.WhisperRecipeCount = 5
+
+#   봇이 안내했던 전문기술을 기억해 관련 귓말에 답할 수 있는 시간입니다.
+#   단위: 초. 기본값: 3600
+PlayerbotArtisans.WhisperMemorySeconds = 3600
+
+#   여러 안내 문구를 번갈아 사용해 거래 채널에서 같은 문장만
+#   반복하는 느낌을 줄입니다. 기본값: 1
+PlayerbotArtisans.VaryAdWording = 1

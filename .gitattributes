@@ -1,0 +1,2 @@
+# Preserve the published source snapshot byte-for-byte across Windows clones.
+* -text

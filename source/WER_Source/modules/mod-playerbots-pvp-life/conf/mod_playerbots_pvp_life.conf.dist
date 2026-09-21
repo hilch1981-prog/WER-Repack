@@ -1,0 +1,210 @@
+###################################################################################################
+# 플레이어봇 PvP 생활 모듈
+###################################################################################################
+
+[worldserver]
+
+# 모듈 사용 여부.
+PvPLife.Enable = 1
+
+# 서버 상세 로그를 출력합니다.
+PvPLife.Debug = 0
+
+# 활동 시작·종료 시 서버 전체에 시스템 안내를 보냅니다.
+# 실제 유저 같은 자연스러운 분위기를 원하면 끄는 것을 권장합니다.
+PvPLife.Announce = 0
+
+# 월드서버 시작 후 모듈이 활동을 시작하기까지의 대기 시간입니다.
+PvPLife.StartupDelaySeconds = 90
+
+# 활동 관리 로직 실행 주기입니다.
+PvPLife.TickSeconds = 20
+
+###################################################################################################
+# 봇 선택 및 이동
+###################################################################################################
+
+# 가능하면 mod-playerbots의 랜덤봇 계정 접두사를 사용합니다.
+PvPLife.Bots.UsePlayerbotConfig = 1
+
+# auto는 mod-playerbots의 접두사를 사용합니다. 필요한 경우에만 별도로 지정하세요.
+PvPLife.Bots.AccountPrefix = "auto"
+
+# 선택적으로 계정 ID 범위를 제한합니다. 두 값이 모두 0이면 제한하지 않습니다.
+PvPLife.Bots.AccountMin = 0
+PvPLife.Bots.AccountMax = 0
+
+PvPLife.Bots.QueryLimit = 500
+
+# 유저와 파티·공격대·던전에 참여 중인 봇을 다른 활동으로 빼내지 않습니다.
+PvPLife.Bots.SkipGrouped = 1
+
+# 켜면 Playerbots의 활동 제한 조건을 통과한 봇만 배정합니다.
+# PvP Life에서는 꺼 두세요. BotActiveAlone 때문에 대부분 또는 모든 랜덤봇이 제외될 수 있습니다.
+PvPLife.Bots.RespectPlayerbotActivity = 0
+
+# 필요하면 무작위 목표 인원보다 적은 봇으로도 활동을 시작합니다.
+# 단, 양쪽 모두 MinimumPerSide 이상의 적격 봇이 있어야 합니다.
+PvPLife.Bots.AllowPartialTeams = 1
+PvPLife.Bots.MinimumPerSide = 1
+
+# 활동이 끝나면 참여한 봇을 원래 위치로 돌려보냅니다.
+PvPLife.Bots.ReturnAfterActivity = 1
+
+# 최초 집결 배치 후에는 전투 지역까지 MovePoint로 이동합니다.
+PvPLife.Movement.UseMovePoint = 1
+
+# 봇이 겹치지 않도록 위치에 더하는 무작위 오차 범위(야드)입니다.
+PvPLife.Movement.PositionJitter = 10
+
+# 모든 봇을 동시에 이동시키지 않고 무작위 지연을 두어 차례로 도착하게 합니다.
+PvPLife.Movement.ArrivalStaggerMinSeconds = 2
+PvPLife.Movement.ArrivalStaggerMaxSeconds = 12
+PvPLife.Movement.MoveAfterArrivalMinSeconds = 6
+PvPLife.Movement.MoveAfterArrivalMaxSeconds = 20
+
+# 활동 하나에서 진영별로 배정할 수 있는 봇 수의 안전 상한입니다.
+# 이 값은 봇을 새로 생성하지 않으며 아래 지역별 인원 설정의 상한만 제한합니다.
+PvPLife.Bots.MaxPerSide = 100
+
+###################################################################################################
+# 지속적인 야외 PvP
+###################################################################################################
+
+# 가급적 항상 어느 한 지역에서는 야외 PvP가 진행되도록 합니다.
+PvPLife.World.AlwaysActive = 1
+
+# 동시에 활성화할 일반 야외 PvP 지역 수입니다.
+PvPLife.World.MinActiveHotspots = 1
+PvPLife.World.MaxActiveHotspots = 3
+
+# MaxActiveHotspots 미만일 때 관리 주기마다 추가 활동을 시작할 확률입니다.
+PvPLife.World.RandomStartChance = 35
+
+###################################################################################################
+# 지역별 인원
+###################################################################################################
+
+# 자동 시작하려면 여기와 pvp_life_zone DB 테이블에서 모두 지역을 활성화해야 합니다.
+# 1=사용, 0=미사용. GM은 꺼진 지역도 .pvplife start <name>으로 시작할 수 있습니다.
+# MinPopulation과 MaxPopulation은 양쪽 진영을 합친 해당 지역의 전체 봇 수입니다.
+# 이 범위에서 전체 인원을 무작위로 선택한 뒤 공격·방어 진영으로 나눕니다.
+# 진영 비율은 pvp_life_zone DB 테이블의 설정을 따릅니다.
+# 전체 인원 상한은 PvPLife.Bots.MaxPerSide의 두 배입니다.
+PvPLife.Zone.StormwindDuel.Enable = 1
+PvPLife.Zone.StormwindDuel.MinPopulation = 8
+PvPLife.Zone.StormwindDuel.MaxPopulation = 16
+PvPLife.Zone.OrgrimmarDuel.Enable = 1
+PvPLife.Zone.OrgrimmarDuel.MinPopulation = 8
+PvPLife.Zone.OrgrimmarDuel.MaxPopulation = 16
+PvPLife.Zone.STV_Nesingwary.Enable = 1
+PvPLife.Zone.STV_Nesingwary.MinPopulation = 10
+PvPLife.Zone.STV_Nesingwary.MaxPopulation = 20
+PvPLife.Zone.STV_Gurubashi.Enable = 1
+PvPLife.Zone.STV_Gurubashi.MinPopulation = 12
+PvPLife.Zone.STV_Gurubashi.MaxPopulation = 24
+PvPLife.Zone.Tanaris_Gadgetzan.Enable = 1
+PvPLife.Zone.Tanaris_Gadgetzan.MinPopulation = 10
+PvPLife.Zone.Tanaris_Gadgetzan.MaxPopulation = 20
+PvPLife.Zone.DarkPortal_Azeroth.Enable = 1
+PvPLife.Zone.DarkPortal_Azeroth.MinPopulation = 12
+PvPLife.Zone.DarkPortal_Azeroth.MaxPopulation = 28
+PvPLife.Zone.DarkPortal_Outland.Enable = 1
+PvPLife.Zone.DarkPortal_Outland.MinPopulation = 12
+PvPLife.Zone.DarkPortal_Outland.MaxPopulation = 28
+PvPLife.Zone.Shattrath_Outskirts.Enable = 1
+PvPLife.Zone.Shattrath_Outskirts.MinPopulation = 10
+PvPLife.Zone.Shattrath_Outskirts.MaxPopulation = 24
+PvPLife.Zone.K3_StormPeaks.Enable = 1
+PvPLife.Zone.K3_StormPeaks.MinPopulation = 10
+PvPLife.Zone.K3_StormPeaks.MaxPopulation = 24
+PvPLife.Zone.Wintergrasp.Enable = 1
+PvPLife.Zone.Wintergrasp.MinPopulation = 10
+PvPLife.Zone.Wintergrasp.MaxPopulation = 24
+PvPLife.Zone.Goldshire_Roaming.Enable = 1
+PvPLife.Zone.Goldshire_Roaming.MinPopulation = 4
+PvPLife.Zone.Goldshire_Roaming.MaxPopulation = 10
+PvPLife.Zone.Durotar_Roaming.Enable = 1
+PvPLife.Zone.Durotar_Roaming.MinPopulation = 4
+PvPLife.Zone.Durotar_Roaming.MaxPopulation = 10
+PvPLife.Zone.Orgrimmar_Zeppelin.Enable = 0
+PvPLife.Zone.Orgrimmar_Zeppelin.MinPopulation = 4
+PvPLife.Zone.Orgrimmar_Zeppelin.MaxPopulation = 12
+PvPLife.Zone.ForTheHorde_Stormwind.Enable = 1
+PvPLife.Zone.ForTheHorde_Stormwind.MinPopulation = 12
+PvPLife.Zone.ForTheHorde_Stormwind.MaxPopulation = 28
+PvPLife.Zone.ForTheAlliance_Orgrimmar.Enable = 1
+PvPLife.Zone.ForTheAlliance_Orgrimmar.MinPopulation = 12
+PvPLife.Zone.ForTheAlliance_Orgrimmar.MaxPopulation = 28
+
+###################################################################################################
+# 결투 지역
+###################################################################################################
+
+PvPLife.Duel.Enable = 1
+
+# 활성화된 결투 지역에 봇이 지속적으로 머물도록 합니다.
+PvPLife.Duel.AlwaysActive = 1
+
+# 리치 왕의 분노 클라이언트의 결투 신청 주문입니다.
+PvPLife.Duel.SpellId = 7266
+
+# 결투 지역 활성화 한 번에 예약할 봇 대 봇 결투 쌍의 최대 수입니다.
+PvPLife.Duel.PairLimit = 12
+PvPLife.Duel.PairDelayMinSeconds = 5
+PvPLife.Duel.PairDelayMaxSeconds = 18
+
+# 결투 봇을 설정된 집결지와 목표 지점의 중간 부근에 유지합니다.
+PvPLife.Duel.LeashRadius = 40
+
+# 대기 중인 결투 봇의 배정 위치를 확인하는 주기입니다.
+# 이 보호 기능은 진행 중인 결투나 전투 이동을 방해하지 않습니다.
+PvPLife.Duel.GuardIntervalMs = 1000
+
+# 봇이 근처의 실제 유저에게 결투를 신청할 수 있습니다.
+PvPLife.Duel.ChallengeRealPlayers = 1
+PvPLife.Duel.PlayerChallengeChance = 25
+PvPLife.Duel.PlayerScanRadius = 55
+
+# 레벨 차이 제한입니다. 예를 들어 5이면 10레벨 봇은 5~15레벨 유저에게만 신청합니다.
+PvPLife.Duel.MaxLevelDifference = 5
+
+# 같은 유저나 봇에게 결투 신청이 반복되지 않도록 대기 시간을 둡니다.
+PvPLife.Duel.PlayerChallengeCooldownSeconds = 900
+PvPLife.Duel.BotChallengeCooldownSeconds = 180
+
+# 같은 봇이 다음 봇 대 봇 결투에 배정되기까지의 시간입니다.
+PvPLife.Duel.BotVsBotCooldownSeconds = 45
+
+# 봇 대 봇 결투에서 허용하는 최대 레벨 차이입니다.
+PvPLife.Duel.BotVsBotMaxLevelDifference = 5
+
+###################################################################################################
+# 호드를 위하여 / 얼라이언스를 위하여
+###################################################################################################
+
+# 적 진영의 대도시나 영역을 공격하는 활동입니다.
+# 별도 서버 공지 이벤트가 아닌 일반 야외 PvP 활동으로 처리합니다.
+PvPLife.ForTheHorde.Enable = 1
+PvPLife.ForTheAlliance.Enable = 1
+
+# 전체 재사용 대기시간 후 관리 주기마다 진영 공격 활동을 시도할 확률입니다.
+PvPLife.FactionCampaign.ChancePerTick = 12
+PvPLife.FactionCampaign.GlobalCooldownSeconds = 3600
+
+###################################################################################################
+# 자연스러운 봇 대화
+###################################################################################################
+
+# 주로 진영 간 도시 전투에 사용합니다. 대화는 pvp_life_chat에 저장됩니다.
+PvPLife.BotChat.Enable = 1
+PvPLife.BotChat.YellChance = 70
+PvPLife.BotChat.WorldChance = 35
+
+###################################################################################################
+# 플레이어봇 행동 전략
+###################################################################################################
+
+PvPLife.Strategies.Combat = "+pvp,+boost,+dps debuff,-passive,-stay"
+PvPLife.Strategies.NonCombat = "+pvp,+boost,-passive,-stay"
+PvPLife.Strategies.DuelNonCombat = "+duel,+pvp,+boost,+stay,-follow,-passive,-grind"

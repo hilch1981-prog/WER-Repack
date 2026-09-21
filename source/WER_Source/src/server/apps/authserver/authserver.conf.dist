@@ -1,0 +1,452 @@
+###############################################
+# WER 인증 서버 설정 파일 #
+###############################################
+[authserver]
+
+###################################################################################################
+# 설정 항목 목차
+#
+#    설정 예시
+#    인증 서버 설정
+#    MySQL 설정
+#    암호화
+#    업데이트 설정
+#    로그 시스템 설정
+#    네트워크
+#
+###################################################################################################
+
+###################################################################################################
+# 설정 작성 예시
+#
+#    Variable
+#        설명: 이 변수가 하는 일을 간단히 설명합니다.
+#        중요: 이 변수에 관해 중요한 사항을 적습니다.
+#        예:          "예시, 즉 값이 문자열인 경우"
+#        기본값:      10 - (활성|주석|옵션을 묶어 설명할 경우 변수 이름)
+#                     0  - (비활성|주석|옵션을 묶어 설명할 경우 변수 이름)
+#
+# 개발자 참고:
+# - 형식을 유지하려면 이 예시를 복사하세요.
+# - 한 줄은 100열을 넘지 않도록 줄바꿈하세요.
+###################################################################################################
+
+###################################################################################################
+# 인증 서버 설정
+#
+#    LogsDir
+#        설명: 로그 디렉터리 설정입니다.
+#        중요: 문자열에 공백이 포함될 수 있으므로 LogsDir 값은 따옴표로 감싸야 합니다.
+#                     로그 디렉터리가 반드시 있어야 하며, 없으면 로그 파일 생성이 비활성화됩니다.
+#        예:          "/home/youruser/WER/logs"
+#        기본값:      "" - (로그 파일을 현재 경로에 저장)
+
+LogsDir = ""
+
+#
+#    MaxPingTime
+#        설명: 데이터베이스 연결 확인 간격(분)입니다.
+#        기본값:     30
+
+MaxPingTime = 30
+
+#
+#    RealmServerPort
+#        설명: 인증 서버 접속에 사용하는 TCP 포트입니다.
+#        기본값:     3724
+
+RealmServerPort = 3724
+
+#
+#
+#    BindIP
+#        설명: 인증 서버가 수신할 IP 주소 또는 호스트 이름입니다.
+#        기본값: "0.0.0.0" - (시스템의 모든 IP 주소에서 수신)
+
+BindIP = "0.0.0.0"
+
+#
+#    EnableProxyProtocol
+#        설명: Proxy Protocol v2를 활성화합니다. 서버가 프록시, 로드 밸런서 또는 이와 유사한
+#              구성 요소 뒤에 있는 경우, 플레이어의 실제 IP 주소를 추적하려면 이 서버와
+#              프록시/로드 밸런서 양쪽 모두에서 Proxy Protocol v2를 활성화해야 합니다.
+#        예:          1 - (활성)
+#        기본값:      0 - (비활성)
+
+EnableProxyProtocol = 0
+
+#
+#    PidFile
+#        설명: 인증 서버의 프로세스 ID(PID)를 기록할 파일입니다.
+#        예: "./authserver.pid" - (활성)
+#        기본값:     ""                  - (비활성)
+
+PidFile = ""
+
+#
+#    UseProcessors
+#        설명: Windows 및 Linux 기반 멀티 프로세서 시스템용 프로세서 마스크입니다.
+#        예:   CPU가 3개인 컴퓨터의 경우:
+#                     1 - 첫 번째 CPU만
+#                     2 - 두 번째 CPU만
+#                     4 - 세 번째 CPU만
+#                     6 - 두 번째 + 세 번째 CPU ("2 | 4" -> 6 이므로)
+#        기본값:      0  - (OS가 선택)
+#                     1+ - (선택한 프로세서의 비트 마스크 값)
+
+UseProcessors = 0
+
+#
+#    ProcessPriority
+#        설명: Windows 및 Linux 기반 시스템의 프로세스 우선순위 설정입니다.
+#        세부 사항:   Linux에서는 nice 값 -15가 사용됩니다(superuser 권한 필요). Windows에서는 프로세스가 HIGH 클래스로 설정됩니다.
+#        기본값:      0 - (보통)
+#                     1 - (높음)
+
+ProcessPriority = 0
+
+#
+#    RealmsStateUpdateDelay
+#        설명: 렐름 목록 갱신 간격(초)입니다.
+#        기본값:     20 - (활성)
+#                     0  - (비활성)
+
+RealmsStateUpdateDelay = 20
+
+#
+#    WrongPass.MaxCount
+#        설명: 계정 또는 IP를 차단하기 전까지 허용하는
+#                     banned.
+#        기본값:     0  - (비활성)
+#                     1+ - (활성)
+
+WrongPass.MaxCount = 0
+
+#
+#    WrongPass.BanTime
+#        설명: 로그인 실패로 계정 또는 IP를 차단하는 시간(초)입니다.
+#        기본값: 600 - (10분)
+#                     0 - (영구 차단)
+
+WrongPass.BanTime = 600
+
+#
+#    WrongPass.BanType
+#        설명: 로그인 실패 시 차단 대상을 지정합니다.
+#        기본값: 0 - (IP 차단)
+#                     1 - (계정 차단)
+
+WrongPass.BanType = 0
+
+#
+#    WrongPass.Logging
+#        설명: 잘못된 비밀번호로 로그인한 시도를 추가로 기록합니다.
+#        기본값:     0 - (비활성)
+#                     1 - (활성)
+
+WrongPass.Logging = 0
+
+#
+#    BanExpiryCheckInterval
+#        설명: 차단 기간 만료 여부를 확인하는 간격(초)입니다.
+#        기본값:     60
+#
+
+BanExpiryCheckInterval = 60
+
+#
+#    StrictVersionCheck
+#        설명: 변조된 클라이언트의 접속을 차단합니다.
+#        기본값:     0 - (비활성)
+#                     1 - (활성)
+#
+
+StrictVersionCheck = 0
+
+#
+#    SourceDirectory
+#        설명: WER 소스 코드 폴더의 경로입니다.
+#                     비워 두면 빌드에 내장된 CMAKE_SOURCE_DIR 경로를 사용합니다.
+#        예:     "../WER"
+#        기본값:     ""
+#
+
+SourceDirectory = ""
+
+#
+#    MySQLExecutable
+#        설명: MySQL CLI 실행 파일의 경로입니다.
+#              경로를 비워 두면 cmake에서 지정한 내장 경로를 사용합니다.
+#        예:          "C:/Program Files/MySQL/MySQL Server 8.4/bin/mysql.exe"
+#                     "mysql.exe"
+#                     "/usr/bin/mysql"
+#        기본값:      ""
+#
+
+MySQLExecutable = ""
+
+#
+#    TempDir
+#        설명: 임시 디렉터리 설정입니다.
+#        중요: 문자열에 공백이 포함될 수 있으므로 TempDir 값은 따옴표로 감싸야 합니다.
+#                     TempDir 디렉터리가 반드시 있어야 하며, 없으면 서버가 정상적으로 작동하지 않습니다.
+#        예:          "/home/youruser/WER/temp"
+#        기본값:      "" - (임시 파일을 현재 경로에 저장)
+
+TempDir = ""
+
+#
+#    IPLocationFile
+#        설명: IP2Location 데이터베이스 CSV 파일의 경로입니다.
+#        예:          "C:/acore/IP2LOCATION-LITE-DB1.CSV"
+#                     "/home/acore/IP2LOCATION-LITE-DB1.CSV"
+#        기본값:      ""  - (비활성)
+
+IPLocationFile = ""
+
+#
+#    AllowLoggingIPAddressesInDatabase
+#        설명: IP 주소를 데이터베이스에 기록할지 설정합니다.
+#        기본값:     1 - (활성)
+#                     0 - (비활성)
+#
+
+AllowLoggingIPAddressesInDatabase = 1
+
+#
+###################################################################################################
+
+###################################################################################################
+# MySQL 설정
+#
+#    LoginDatabaseInfo
+#        설명: 렐름 서버의 데이터베이스 연결 설정입니다.
+#        예:          "hostname;port;username;password;database"
+#                     ".;somenumber;username;password;database" - (Windows에서 명명된 파이프 사용 시
+#                                                                 my.ini의 [mysqld] 섹션에
+#                                                                 "enable-named-pipe" 추가)
+#                     ".;/path/to/unix_socket;username;password;database" - (Unix/Linux에서
+#                                                                           Unix 소켓 사용)
+#        기본값:      "127.0.0.1;3306;acore;acore;acore_auth"
+
+LoginDatabaseInfo = "127.0.0.1;3306;wowlegends;wowlegends;wl_auth"
+
+#
+#    Database.Reconnect.Seconds
+#    Database.Reconnect.Attempts
+#
+#        설명: 재접속 시도 사이의 대기 시간(초)과
+#                     총 재접속 시도 횟수입니다.
+#        기본값: 15초 간격으로 총 20회 시도
+#
+
+Database.Reconnect.Seconds = 15
+Database.Reconnect.Attempts = 20
+
+#
+#    LoginDatabase.WorkerThreads
+#        설명: 비동기(지연) MySQL 쿼리를 처리하기 위해 생성하는 작업 스레드 수입니다.
+#                     각 작업 스레드는 자체 연결을 하나씩 가집니다.
+#        기본값:     1
+
+LoginDatabase.WorkerThreads = 1
+
+#
+#    LoginDatabase.SynchThreads
+#        설명: 처리를 위해 생성하는 MySQL 연결 수입니다.
+#        기본값:     1 - (LoginDatabase.WorkerThreads)
+#
+
+LoginDatabase.SynchThreads = 1
+
+#
+###################################################################################################
+
+###################################################################################################
+# 암호화
+
+#
+#    TOTPMasterSecret
+#        설명: 데이터베이스에 저장되는 TOTP 비밀 키를 암호화하는 데 사용하는 마스터 키입니다.
+#              이 값을 변경하려면 TOTPOldMasterSecret의 주석을 해제하고 기존 비밀 키를
+#              그곳에 복사한 뒤 authserver를 한 번 실행하세요. 그 후에는 해당 줄을 다시
+#              주석 처리하고 기존 비밀 키를 삭제해도 됩니다.
+#
+#        기본값: <비어 있음> - (TOTP 비밀키를 암호화하지 않고 저장)
+#        예:     000102030405060708090A0B0C0D0E0F
+
+TOTPMasterSecret =
+
+
+#
+###################################################################################################
+
+###################################################################################################
+# 업데이트 설정
+#
+#    Updates.EnableDatabases
+#        설명: 자동 업데이트할 데이터베이스를 지정하는 비트 마스크입니다.
+#
+#        다음 플래그를 사용할 수 있습니다.
+#           DATABASE_LOGIN     = 1, // Auth database
+#
+#        기본값:     0  - (모두 비활성)
+#                     1  - (모두 활성)
+
+Updates.EnableDatabases = 0
+
+#
+#    Updates.AutoSetup
+#        설명: 비어 있는 데이터베이스를 자동으로 초기화합니다.
+#        기본값:     1 - (활성)
+#                     0 - (비활성)
+
+Updates.AutoSetup = 1
+
+#
+#    Updates.Redundancy
+#        설명: 해시로 SQL 업데이트 파일의 변경 여부를 확인하고
+#                     변경된 파일을 다시 적용합니다.
+#        기본값:     1 - (활성)
+#                     0 - (비활성)
+
+Updates.Redundancy = 1
+
+#
+#    Updates.ArchivedRedundancy
+#        설명: 보관된 업데이트의 해시를 확인합니다. 서버 시작이 느려집니다.
+#        기본값:     0 - (비활성)
+#                     1 - (활성)
+
+Updates.ArchivedRedundancy = 0
+
+#
+#    Updates.AllowRehash
+#        설명: DB의 파일 해시가 비어 있으면 현재 파일 해시를 입력합니다.
+#                     해시를 모르는 파일을 적용된 것으로 표시할 때 유용합니다.
+#        기본값:     1 - (활성)
+#                     0 - (비활성)
+
+Updates.AllowRehash = 1
+
+#
+#    Updates.CleanDeadRefMaxCount
+#        설명: 업데이트를 삭제했거나, 이름 변경과 수정을 한 번에 했을 때 생기는 끊긴/고아 참조를 정리합니다.
+#                     누락된 업데이트 수가 Updates.CleanDeadRefMaxCount 값 이하일 때만 정리를 시작합니다.
+#                     이렇게 해서 소스 디렉터리 상태가 잘못된 경우(잘못된 브랜치나 리비전 등) 업데이트 이력이 지워지는 것을 막습니다.
+#                     데이터베이스가 "dirty state"일 가능성을 확인하고 싶다면 이 기능을 비활성화하세요.
+#        기본값:     3 - (활성)
+#                     0 - (비활성)
+#                    -1 - (활성 - 무제한)
+
+Updates.CleanDeadRefMaxCount = 3
+###################################################################################################
+
+###################################################################################################
+#
+#  로그 시스템 설정
+#
+#  Appender 설정 값: Appender "name"이 주어졌을 때
+#    Appender.name
+#        설명: 로그를 '어디에 기록할지' 정의합니다
+#        형식:        Type,LogLevel,Flags,optional1,optional2,optional3
+#
+#                     Type
+#                         0 - (없음)
+#                         1 - (콘솔)
+#                         2 - (파일)
+#                         3 - (데이터베이스)
+#
+#                     LogLevel
+#                         0 - (비활성)
+#                         1 - (치명적 오류)
+#                         2 - (오류)
+#                         3 - (경고)
+#                         4 - (정보)
+#                         5 - (디버그)
+#                         6 - (추적)
+#
+#                     Flags:
+#                         0 - 없음
+#                         1 - 텍스트 앞에 타임스탬프 추가
+#                         2 - 텍스트 앞에 로그 레벨 추가
+#                         4 - 텍스트 앞에 로그 필터 유형 추가
+#                         8 - 로그 파일 이름 뒤에 타임스탬프 추가. 형식: YYYY-MM-DD_HH-MM-SS (Type = 2일 때만 사용)
+#                        16 - 덮어쓰기 전에 기존 파일 백업 (Mode = w일 때만 사용)
+#
+#                     Colors (Type = Console일 때 optional1로 읽음)
+#                         형식: "fatal error warn info debug trace"
+#                         0 - BLACK
+#                         1 - RED
+#                         2 - GREEN
+#                         3 - BROWN
+#                         4 - BLUE
+#                         5 - MAGENTA
+#                         6 - CYAN
+#                         7 - GREY
+#                         8 - YELLOW
+#                         9 - LRED
+#                        10 - LGREEN
+#                        11 - LBLUE
+#                        12 - LMAGENTA
+#                        13 - LCYAN
+#                        14 - WHITE
+#                         예: "1 9 3 6 5 8"
+#
+#                     File: 파일 이름 (Type = File일 때 optional1로 읽음)
+#                         "%s"를 하나 사용하여 동적 파일을 만들 수 있습니다
+#
+#                     Mode: 파일을 여는 모드 (Type = File일 때 optional2로 읽음)
+#                          a - (이어쓰기)
+#                          w - (덮어쓰기)
+#
+#                     MaxFileSize: 새 로그 파일을 만들기 전까지 로그 파일의 최대 크기
+#                     (Type = File일 때 optional3로 읽음)
+#                         크기는 64비트 부호 없는 정수로 표현된 바이트 단위입니다.
+#                         최댓값은 4294967295 (4 GB)입니다. 제한을 두지 않으려면 비워 두세요.
+#                         참고: 동적 파일 이름에서는 작동하지 않습니다.
+#                         예:  536870912 (512 MB)
+#
+
+Appender.Console=1,5,0,"1 9 3 6 5 8"
+Appender.Auth=2,5,0,Auth.log,w
+
+#  Logger 설정 값: Logger "name"이 주어졌을 때
+#    Logger.name
+#        설명: 어떤 내용을 기록할지 지정합니다.
+#        형식: LogLevel,AppenderList
+#
+#                     LogLevel
+#                         0 - (비활성)
+#                         1 - (치명적 오류)
+#                         2 - (오류)
+#                         3 - (경고)
+#                         4 - (정보)
+#                         5 - (디버그)
+#                         6 - (추적)
+#
+#                     AppenderList: 로거에 연결된 어펜더 목록
+#                     (공백으로 구분).
+#
+
+Logger.root=4,Console Auth
+
+#
+###################################################################################################
+
+###################################################################################################
+# 네트워크
+#
+#    Network.UseSocketActivation
+#        설명: [LINUX 전용 기능] authserver에서 systemd 소켓 활성화(socket activation) 지원을 켭니다.
+#              활성화된 상태에서 프로세스가 systemd 소켓 활성화로 시작되면, 서버는 직접
+#              수신 소켓을 만들고 바인딩하는 대신 systemd가 전달한 소켓을 사용합니다.
+#              기본적으로 비활성입니다.
+#
+#        예:     1 - (활성)
+#        기본값:     0 - (비활성)
+
+Network.UseSocketActivation = 0
+
+#
+###################################################################################################

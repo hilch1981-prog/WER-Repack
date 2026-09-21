@@ -1,0 +1,63 @@
+[worldserver]
+
+#
+#   IndividualXp.Enabled
+#
+#   설명: IndividualXP 모듈을 활성화하거나 비활성화합니다.
+#   예:
+#       true (모듈을 사용할 수 있음)
+#       false (아무도 명령어를 사용할 수 없음)
+#
+#   기본값: true
+#
+
+IndividualXp.Enabled = true
+
+#
+#   IndividualXp.Announce
+#
+#   설명: 로그인 시 IndividualXP 모듈을 안내합니다.
+#   예:
+#           true (플레이어가 접속하면 채팅창에 메시지가 표시됨)
+#           false (메시지가 표시되지 않음)
+#
+#   기본값: true
+#
+
+IndividualXp.Announce = true
+
+#
+#   IndividualXp.AnnounceRatesOnLogin
+#
+#   설명: 플레이어가 접속하면 현재 적용 중인 배율과 최댓값을 채팅창에 보여 줍니다
+#   예:
+#           true (플레이어가 접속하면 채팅창에 메시지가 표시됨)
+#           false (메시지가 표시되지 않음)
+#
+#   기본값: true
+#
+
+IndividualXp.AnnounceRatesOnLogin = true
+
+#
+#   IndividualXp.MaxXPRate
+#
+#   설명: 플레이어가 설정할 수 있는 경험치 배율의 최댓값입니다.
+#   예: 1 또는 2 또는 3 또는 4 (원하는 양의 정수)
+#
+#   기본값: 10
+#
+
+IndividualXp.MaxXPRate = 10
+
+#
+#   DefaultXPRate
+#
+#   설명: 플레이어에게 처음 적용되는 기본 배율입니다.
+#   권장 사항: 기본값을 최댓값으로 설정하는 것도 좋은 방법입니다.
+#   그러면 각 플레이어가 배율을 낮출지 직접 선택할 수 있습니다. 물론 1로 설정해도 됩니다.
+#
+#   기본값: 1
+#
+
+IndividualXp.DefaultXPRate = 1

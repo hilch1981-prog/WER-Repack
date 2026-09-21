@@ -1,0 +1,40 @@
+{
+ "started": "2026-09-17 00:45:39",
+ "out": "E:\\wow_free_server1\\MAKE\\WOW_Legends_CoreLatest_Test",
+ "steps": [
+  "package hashes OK",
+  "core copied"
+ ],
+ "core_head": "06234df3d5ab26c93f4f1f06f3edb828b73ecd3c",
+ "core_files_applied": [
+  "src/common/Banner.cpp",
+  "src/server/apps/authserver/authserver.conf.dist",
+  "src/server/apps/worldserver/worldserver.conf.dist",
+  "src/server/game/Entities/Creature/Creature.cpp",
+  "src/server/game/Entities/Creature/TemporarySummon.cpp",
+  "src/server/game/Entities/DynamicObject/DynamicObject.cpp",
+  "src/server/game/Entities/GameObject/GameObject.cpp",
+  "src/server/game/Entities/Object/Object.cpp",
+  "src/server/game/Entities/Object/Object.h",
+  "src/server/game/Entities/Player/PlayerQuest.cpp",
+  "src/server/game/Entities/Player/PlayerStorage.cpp",
+  "src/server/game/Entities/Transport/Transport.cpp",
+  "src/server/game/Guilds/Guild.cpp",
+  "src/server/game/Handlers/MailHandler.cpp",
+  "src/server/game/Handlers/QuestHandler.cpp",
+  "src/server/game/Maps/Map.cpp",
+  "src/server/game/Maps/Map.h",
+  "src/server/game/Scripting/ScriptDefines/PlayerScript.cpp"
+ ],
+ "module_heads": {
+  "mod-playerbots": "b6696bdbd3740e575598d167d69f39f68cc0b907",
+  "mod-dungeon-clear": "29c53fd10f99c1f978fba6cecd326bde8ce170d9",
+  "mod-transmog": "0d85cbc53d63ce2df8527169ce6ae47f5f6f6ba8",
+  "mod-ah-bot": "a680cc1c98290713e9b3d3289544af78e5186dc1",
+  "mod-individual-xp": "503471f766bc4f21dca0aa05e6a9d3d40718a780"
+ },
+ "wowlegends_script": "{\n \"target\": \"E:\\\\wow_free_server1\\\\MAKE\\\\WOW_Legends_CoreLatest_Test\\\\modules\\\\mod-wowlegends\",\n \"apply\": true,\n \"files\": [\n  {\n   \"file\": \"wowlegends_aichat.cpp\",\n   \"isrealplayer\": 5,\n   \"id1\": 2\n  },\n  {\n   \"file\": \"wowlegends_botsocial.cpp\",\n   \"isrealplayer\": 10,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"wowlegends_companion.cpp\",\n   \"isrealplayer\": 6,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"wowlegends_companion_memory.cpp\",\n   \"isrealplayer\": 4,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"wowlegends_hardcore.cpp\",\n   \"isrealplayer\": 8,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"wowlegends_livingchatter.cpp\",\n   \"isrealplayer\": 2,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"wowlegends_paths.cpp\",\n   \"isrealplayer\": 19,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"wowlegends_sage.cpp\",\n   \"isrealplayer\": 0,\n   \"id1\": 1\n  },\n  {\n   \"file\": \"wowlegends_warbandcamp.cpp\",\n   \"isrealplayer\": 5,\n   \"id1\": 0\n  },\n  {\n   \"file\": \"mod_wowlegends_hardcore_npc.sql\",\n   \"sql_statements\": 2\n  }\n ],\n \"remaining\": [],\n \"backup\": \"E:\\\\wow_free_server1\\\\MAKE\\\\migration_ops\\\\module_work\\\\core_latest_trial_20260916\\\\wowlegends_core_latest\\\\backup_mod-wowlegends_20260917_004632\",\n \"state\": \"OK\"\n}\n",
+ "conflict_markers": [],
+ "state": "ASSEMBLED_UNBUILT",
+ "finished": "2026-09-17 00:46:40"
+}

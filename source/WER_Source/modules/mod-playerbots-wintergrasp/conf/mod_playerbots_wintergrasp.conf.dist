@@ -1,0 +1,84 @@
+[worldserver]
+
+###################################################################################################
+# mod-playerbots-wintergrasp
+#
+# 플레이어봇의 겨울손아귀 대기열 및 실제 전투 입장 초대를 자동 수락합니다.
+#
+# 권장 적용 대상:
+#   mod-playerbots/azerothcore-wotlk: Playerbot 브랜치
+#   mod-playerbots/mod-playerbots: master 브랜치
+#
+###################################################################################################
+
+#
+# PlayerbotsWintergrasp.Enable
+#   모듈 전체를 켜거나 끕니다.
+#   기본값: 1
+#
+PlayerbotsWintergrasp.Enable = 1
+
+#
+# PlayerbotsWintergrasp.AcceptQueue
+#   봇의 SMSG_BATTLEFIELD_MGR_QUEUE_INVITE 대기열 초대를 수락합니다.
+#   봇을 겨울손아귀의 일반 전투 시작 전 대기열에 넣습니다.
+#   기본값: 1
+#
+PlayerbotsWintergrasp.AcceptQueue = 1
+
+#
+# PlayerbotsWintergrasp.AcceptBattle
+#   봇의 SMSG_BATTLEFIELD_MGR_ENTRY_INVITE 전투 입장 초대를 수락합니다.
+#   코어는 봇의 실제 초대가 존재하고 아직 만료되지 않았는지 계속 검증합니다.
+#   기본값: 1
+#
+PlayerbotsWintergrasp.AcceptBattle = 1
+
+#
+# PlayerbotsWintergrasp.Announce
+#   실제 유저 접속 시 제작자 iCore 표기를 포함한 짧은 모듈 안내를 표시합니다.
+#   플레이어봇 접속에는 이 메시지를 보내지 않습니다.
+#   기본값: 1
+#
+PlayerbotsWintergrasp.Announce = 1
+
+#
+# PlayerbotsWintergrasp.AcceptDelayMin
+# PlayerbotsWintergrasp.AcceptDelayMax
+#   수락 전 무작위 대기 시간(밀리초)입니다.
+#   수백 마리 봇이 같은 순간에 동시에 수락하는 것을 방지합니다.
+#
+#   AcceptDelayMax는 겨울손아귀 입장 초대 만료 시간보다 충분히 짧게 설정하세요.
+#   현재 코어의 수락 제한 시간은 20초입니다.
+#
+#   기본값: 500 / 2500
+#
+PlayerbotsWintergrasp.AcceptDelayMin = 500
+PlayerbotsWintergrasp.AcceptDelayMax = 2500
+
+#
+# PlayerbotsWintergrasp.Tactics.Enable
+#   NoxMax의 겨울손아귀 전장 AI를 이식한 실험 기능을 켭니다:
+#   목표 이동, 작업장 점령, 탈것 소환·운전 및 대포 사용을 지원합니다.
+#
+#   위의 패킷 기반 대기열·전투 초대 처리는 이 제어 기능과 독립적이며
+#   이 기능으로 대체되지 않습니다.
+#
+#   기본값: 0. 로컬 시험을 할 때 명시적으로 켜세요.
+#
+PlayerbotsWintergrasp.Tactics.Enable = 0
+
+#
+# PlayerbotsWintergrasp.Tactics.UpdateInterval
+#   제어 주기(밀리초). 250 미만의 값은 250으로 제한됩니다.
+#   기본값: 1000
+#
+PlayerbotsWintergrasp.Tactics.UpdateInterval = 1000
+
+#
+# PlayerbotsWintergrasp.Debug
+#   초대 감지·수락 메시지를 플레이어봇 로그에 기록합니다.
+#   최초 시험에는 유용하지만 봇이 많을 때는 꺼 두세요.
+#   기본값: 0
+#
+PlayerbotsWintergrasp.Debug = 0

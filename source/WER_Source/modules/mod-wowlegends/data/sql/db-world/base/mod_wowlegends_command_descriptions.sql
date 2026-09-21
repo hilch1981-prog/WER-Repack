@@ -1,0 +1,32 @@
+-- WOW Legends: fill in descriptions AzerothCore ships without, so the command
+-- reference (and in-game .help) is complete. Sets help = "Syntax: <usage>\n\n<description>".
+UPDATE `command` SET `help`='Syntax: .account 2fa <setup/remove>\n\nSet up or remove two-factor authentication (TOTP) for this account.' WHERE `name`='account 2fa';
+UPDATE `command` SET `help`='Syntax: .bf enable <battleid>\n\nEnable a battlefield (e.g. Wintergrasp) by its battle id.' WHERE `name`='bf enable';
+UPDATE `command` SET `help`='Syntax: .bf start <battleid>\n\nForce the battlefield with the given battle id to start now.' WHERE `name`='bf start';
+UPDATE `command` SET `help`='Syntax: .bf stop <battleid>\n\nForce the battlefield with the given battle id to end now.' WHERE `name`='bf stop';
+UPDATE `command` SET `help`='Syntax: .bf switch <battleid>\n\nSwitch the controlling/defending team of the given battlefield.' WHERE `name`='bf switch';
+UPDATE `command` SET `help`='Syntax: .character check bag [<target_player>] <bagSlot 1-4>\n\nList the contents of the target player bag in the given slot (1-4).' WHERE `name`='character check bag';
+UPDATE `command` SET `help`='Syntax: .disable add battleground <entry> <flag> <comment>\n\nDisable a battleground by entry so the core skips it (flag + comment stored).' WHERE `name`='disable add battleground';
+UPDATE `command` SET `help`='Syntax: .disable add map <entry> <flag> <comment>\n\nDisable a map by entry so the core skips it (flag + comment stored).' WHERE `name`='disable add map';
+UPDATE `command` SET `help`='Syntax: .disable add outdoorpvp <entry> <flag> <comment>\n\nDisable an outdoor-PvP zone by entry (flag + comment stored).' WHERE `name`='disable add outdoorpvp';
+UPDATE `command` SET `help`='Syntax: .disable add quest <entry> <flag> <comment>\n\nDisable a quest by entry so it cannot be taken (flag + comment stored).' WHERE `name`='disable add quest';
+UPDATE `command` SET `help`='Syntax: .disable add spell <entry> <flag> <comment>\n\nDisable a spell by entry so it cannot be cast (flag + comment stored).' WHERE `name`='disable add spell';
+UPDATE `command` SET `help`='Syntax: .disable add vmap <entry> <flag> <comment>\n\nDisable VMAP (line-of-sight/height) for a map by entry.' WHERE `name`='disable add vmap';
+UPDATE `command` SET `help`='Syntax: .disable remove battleground <entry>\n\nRe-enable a previously disabled battleground entry.' WHERE `name`='disable remove battleground';
+UPDATE `command` SET `help`='Syntax: .disable remove map <entry>\n\nRe-enable a previously disabled map entry.' WHERE `name`='disable remove map';
+UPDATE `command` SET `help`='Syntax: .disable remove outdoorpvp <entry>\n\nRe-enable a previously disabled outdoor-PvP zone entry.' WHERE `name`='disable remove outdoorpvp';
+UPDATE `command` SET `help`='Syntax: .disable remove quest <entry>\n\nRe-enable a previously disabled quest entry.' WHERE `name`='disable remove quest';
+UPDATE `command` SET `help`='Syntax: .disable remove spell <entry>\n\nRe-enable a previously disabled spell entry.' WHERE `name`='disable remove spell';
+UPDATE `command` SET `help`='Syntax: .disable remove vmap <entry>\n\nRe-enable VMAP for a previously disabled map entry.' WHERE `name`='disable remove vmap';
+UPDATE `command` SET `help`='Syntax: .gear stats\n\nShow gear statistics (such as average item level) for the selected player.' WHERE `name`='gear stats';
+UPDATE `command` SET `help`='Syntax: .go xyz <x> <y> [<z> [<mapid> [<orientation>]]]\n\nTeleport to the given X Y (optionally Z, map id and orientation) coordinates.' WHERE `name`='go xyz';
+UPDATE `command` SET `help`='Syntax: .gobject respawn <guid>\n\nRespawn the selected gameobject, or the one with the given guid.' WHERE `name`='gobject respawn';
+UPDATE `command` SET `help`='Syntax: .learn all recipes [<profession>]\n\nLearn all recipes of a profession and set its skill to max (e.g. .learn all recipes enchanting).' WHERE `name`='learn all recipes';
+UPDATE `command` SET `help`='Syntax: .player learn <playername> <spell> [all]\n\nMake the named player learn a spell (use all for every rank).' WHERE `name`='player learn';
+UPDATE `command` SET `help`='Syntax: .player unlearn <playername> <spell> [all]\n\nMake the named player unlearn a spell (use all for every rank).' WHERE `name`='player unlearn';
+UPDATE `command` SET `help`='Syntax: .reload gameobject_questender\n\nReload the gameobject_questender table from the database.' WHERE `name`='reload gameobject_questender';
+UPDATE `command` SET `help`='Syntax: .reload graveyard_zone\n\nReload the graveyard_zone table from the database.' WHERE `name`='reload graveyard_zone';
+UPDATE `command` SET `help`='Syntax: .reload module_string\n\nReload the module_string table from the database.' WHERE `name`='reload module_string';
+UPDATE `command` SET `help`='Syntax: .reload waypoint_data\n\nReload the waypoint_data (creature path) table from the database.' WHERE `name`='reload waypoint_data';
+UPDATE `command` SET `help`='Syntax: .string <id> [<locale>]\n\nPrint the localized acore_string text for the given string id.' WHERE `name`='string';
+UPDATE `command` SET `help`='Syntax: .wp modify\n\nModify the selected creature waypoint (path) data.' WHERE `name`='wp modify';

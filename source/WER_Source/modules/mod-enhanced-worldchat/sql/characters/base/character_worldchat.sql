@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `character_worldchat` (
+  `guid` INT UNSIGNED NOT NULL,
+  `receive_enabled` TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  `world_mode` TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  PRIMARY KEY (`guid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -1,0 +1,55 @@
+#
+# Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license: https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3
+#
+
+[worldserver]
+
+###############################################################################
+#   mod-questradar.conf
+#   AzerothCore 모듈 - 퀘스트 목표 위치 안내 (서버)
+###############################################################################
+
+#
+#    QuestRadar.Enable
+#        설명: 모듈 전체 활성화 스위치입니다.
+#        기본값: 1 - 활성
+#                0 - 비활성
+#
+
+QuestRadar.Enable = 1
+
+#
+#    QuestRadar.AnnounceOnAccept
+#        설명: 퀘스트 수락 시 현재 지도에서 가까운 목표를 채팅으로 안내합니다.
+#              플레이어가 있는 지도와 아래 테이블의 목표 좌표를 사용합니다.
+#              `quest_poi` / `quest_poi_points` 테이블이 필요합니다.
+#        기본값: 1 - 활성
+#                0 - 비활성 (.questradar 명령은 계속 사용할 수 있습니다)
+#
+
+QuestRadar.AnnounceOnAccept = 1
+
+#
+#    QuestRadar.MaxObjectivesShown
+#        설명: 자동 안내 또는 아래 명령 한 번에 표시할 최대 목표 수입니다.
+#              .questradar / .qr 명령에 적용합니다.
+#        기본값: 3
+#
+
+QuestRadar.MaxObjectivesShown = 3
+
+#
+#    QuestRadar.AddonSyncEnabled
+#        설명: 서버와 애드온 사이의 통신을 활성화합니다.
+#              CHAT_MSG_ADDON / LANG_ADDON 통신을 사용합니다.
+#              client-addon/QuestRadar 애드온을 설치하면
+#              미니맵과 세계 지도에 목표를 표시합니다.
+#              클라이언트에 애드온이 없으면 지도 표시 효과는 없으며
+#              수신된 애드온용 메시지는 처리되지 않습니다.
+#              채팅 안내 기능은 이 설정과 별개입니다.
+#        기본값: 1 - 활성
+#                0 - 비활성 (채팅 안내는
+#                    이 설정과 관계없이 사용할 수 있습니다)
+#
+
+QuestRadar.AddonSyncEnabled = 1

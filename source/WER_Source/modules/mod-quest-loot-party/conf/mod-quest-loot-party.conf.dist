@@ -1,0 +1,20 @@
+[worldserver]
+
+#
+#    QuestParty.Message
+#        설명: 접속 시 모듈 안내를 표시합니다. 대화창 도배 방지를 위해 기본 끔.
+#        값: true(켜기), false(끄기)
+#        상류 기본값: true / 이 서버 기본값: false
+#
+
+QuestParty.Message = false
+
+#
+#    QuestParty.Enable
+#        설명: 일반 품질 퀘스트 전리품을 조건을 만족한 파티원마다 획득할 수 있게 합니다.
+#        자동 지급이나 퀘스트 완료 기능이 아니며 각 파티원이 전리품을 획득해야 합니다.
+#        AoE Loot는 파티별 전리품을 원래 시체에 남겨 소유권을 보존합니다.
+#        값: true(켜기), false(끄기). 기본값: true
+#
+
+QuestParty.Enable = true

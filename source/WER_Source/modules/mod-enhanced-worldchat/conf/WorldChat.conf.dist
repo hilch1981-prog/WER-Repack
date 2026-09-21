@@ -1,0 +1,29 @@
+[worldserver]
+
+WorldChat.Enable = 1
+WorldChat.CrossFaction = 1
+WorldChat.Announce = 0
+WorldChat.ChannelName = "world"
+WorldChat.OnLogin.State = 1
+WorldChat.ForceOnLogin = 1
+WorldChat.AutoJoinChannel = 0
+WorldChat.Tag = "[World]"
+WorldChat.MinimumLevel = 1
+WorldChat.IgnoreSupport = 1
+
+WorldChat.Flood.WindowSeconds = 10
+WorldChat.Flood.WarnCount = 3
+WorldChat.Flood.MuteCount = 5
+WorldChat.Flood.MuteSeconds = 60
+
+WorldChat.DuplicateDetection = 1
+WorldChat.Duplicate.WindowSeconds = 30
+WorldChat.Duplicate.MaxRepeats = 2
+
+WorldChat.UrlFilter = 1
+WorldChat.UrlFilter.BlockedTerms = "http://,https://,www.,.com,.net,.org,discord.gg,bit.ly,tinyurl"
+
+WorldChat.TradeDetection = 1
+WorldChat.GroupDetection = 1
+WorldChat.TradeTag = "[Trade]"
+WorldChat.GroupTag = "[Group]"

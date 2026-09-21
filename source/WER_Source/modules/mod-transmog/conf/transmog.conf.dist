@@ -1,0 +1,340 @@
+[worldserver]
+
+
+###################################################################################################
+#    형상변환 설정
+###################################################################################################
+#
+#    설정
+#
+#    Transmogrification.Enable
+#        설명: 형상변환을 활성화하거나 비활성화합니다.
+#                     비활성화하면 플레이어에게 형상변환된 아이템의 외형이 보이지 않지만, 데이터베이스의 데이터는 그대로 유지됩니다.
+#        기본값:     1
+#
+#    Transmogrification.ShowSetDisclaimer
+#        설명: 활성화하면, 세트에 속한 아이템을 형상변환할 때 플레이어에게 채팅 알림을 보내
+#              툴팁에는 표시되지 않더라도 세트 효과는 계속 적용된다는 점을 안내합니다.
+#              플레이어는 캐릭터별로 다음 명령어로 알림을 끌 수 있습니다: .transmog disclaimer off
+#        기본값:      0
+#
+#    Transmogrification.UseCollectionSystem
+#        설명: 군단(Legion) 방식의 외형 수집 시스템을 활성화/비활성화합니다.
+#              활성화하면, 플레이어는 착용한 적이 있거나 완료한 퀘스트의 보상으로 받은 모든 아이템의 외형을 사용할 수 있습니다.
+#              비활성화하면, 형상변환 외형으로 사용할 아이템을 가방에 가지고 있어야 합니다.
+#        기본값:      1
+#
+#    Transmogrification.UseVendorInterface
+#        설명: 아이템 선택에 가짜 상인 인터페이스를 사용할지 활성화/비활성화합니다.
+#              data/sql/db-world/tasm_world_VendorItems.sql 을 가져오면 아이템 숨기기 및 형상변환 제거용 사용자 정의 아이템(선택 사항)을 사용할 수 있습니다.
+#              활성화하면, 플레이어는 상인 메뉴에서 아이템을 선택할 수 있으며 Ctrl+클릭 미리보기도 사용할 수 있습니다.
+#              비활성화하면, 플레이어는 대화(gossip) 메뉴로 아이템을 선택하며 미리보기를 사용할 수 없습니다.
+#        기본값:      0
+#
+#    Transmogrification.AllowHiddenTransmog
+#        설명: 형상변환으로 장비를 숨기는 기능을 활성화하거나 비활성화합니다.
+#                     활성화하면 플레이어가 형상변환 상인에게서 아이템의 "보이지 않는" 외형을 선택할 수 있습니다.
+#        기본값:     1
+#
+#    Transmogrification.HiddenTransmogIsFree
+#        설명: 형상변환 시스템에서 아이템을 무료로 숨기는 기능을 활성화하거나 비활성화합니다.
+#                     활성화하면 플레이어가 장비를 무료로 숨길 수 있습니다.
+#                     비활성화하면 아이템을 숨길 때 모든 보정값이 적용된 일반 형상변환 비용이 부과됩니다.
+#        기본값:     1
+#
+#    Transmogrification.TrackUnusableItems
+#        설명: 활성화하면 형상변환에 적합하지 않은 아이템의 외형도 수집합니다.
+#                     따라서 나중에 설정이 변경되면 해당 외형을 사용할 수 있습니다.
+#        기본값:     1
+#
+#    Transmogrification.RetroActiveAppearances
+#        설명: 완료한 모든 퀘스트에서 수집하지 않은 외형을 확인하는 기능을 활성화하거나 비활성화합니다.
+#                     플레이어당 한 번만 수행됩니다.
+#        기본값:    1
+#
+#    Transmogrification.ResetRetroActiveAppearancesFlag
+#        설명: 외형 소급 확인의 실행 여부를 나타내는 플래그를 초기화합니다.
+#                     각 캐릭터가 로그인할 때 수행됩니다.
+#        기본값:    0
+#
+#    Transmogrification.EnableTransmogInfo
+#        설명: 형상변환 안내 버튼을 활성화하거나 비활성화합니다.
+#        기본값:    1
+#
+#    Transmogrification.TransmogNpcText
+#        설명: 형상변환 정보 메뉴에 사용할 npc_text 항목
+#        기본값:    601083
+#
+#    Transmogrification.Allowed
+#        설명: 형상변환을 허용할 아이템 항목 ID 목록입니다(품질 및 CanUseItem 검사를 건너뜁니다).
+#                     예: "25 35674 5623"
+#        기본값:    ""
+#
+#    Transmogrification.NotAllowed
+#        설명: 형상변환을 허용하지 않을 아이템 항목 ID 목록입니다.
+#                     예: "25 35674 5623"
+#        기본값:    ""
+#
+#    Transmogrification.EnablePortable
+#        설명: 휴대용 형상변환 NPC를 활성화하거나 비활성화합니다.
+#        기본값:    1
+#
+#    Transmogrification.EnableSortByQualityAndName
+#        설명: 아이템을 품질순으로 먼저 정렬한 다음 이름순으로 정렬하는 기능을 활성화하거나 비활성화합니다.
+#        기본값:    1
+#
+
+Transmogrification.Enable = 1
+Transmogrification.ShowSetDisclaimer = 0
+Transmogrification.UseCollectionSystem = 1
+Transmogrification.UseVendorInterface = 0
+Transmogrification.AllowHiddenTransmog = 1
+Transmogrification.HiddenTransmogIsFree = 1
+Transmogrification.TrackUnusableItems = 1
+Transmogrification.RetroActiveAppearances = 1
+Transmogrification.ResetRetroActiveAppearancesFlag = 0
+
+Transmogrification.EnableTransmogInfo = 1
+Transmogrification.TransmogNpcText = 601083
+
+Transmogrification.Allowed = ""
+Transmogrification.NotAllowed = ""
+
+Transmogrification.EnablePortable = 1
+
+Transmogrification.EnableSortByQualityAndName = 1
+
+#
+#    동화 비용
+#
+#    Transmogrification.ScaledCostModifier
+#        설명: 기본 금전 비용에 적용할 배율입니다(기본 비용을 없애려면 0으로 변경하세요).
+#        기본값:    1.0
+#
+#    Transmogrification.CopperCost
+#        설명: 다른 비용에 추가되는 비용입니다(음수도 가능합니다).
+#        기본값:    0
+#
+#    금전 비용을 직접 지정하려면 ScaledCostModifier를 0.0으로 설정하고 CopperCost에 원하는 비용을 입력하세요.
+
+Transmogrification.ScaledCostModifier = 1.0
+Transmogrification.CopperCost = 0
+
+#
+#    토큰 비용
+#
+#    Transmogrification.RequireToken
+#        설명: 토큰 비용을 추가하거나 비활성화합니다.
+#        기본값:    0
+#
+#    Transmogrification.TokenEntry
+#        설명: 토큰 아이템의 항목 ID입니다.
+#        기본값:    49426
+#
+#    Transmogrification.TokenAmount
+#        설명: 필요한 토큰 수량입니다.
+#        기본값:    1
+
+Transmogrification.RequireToken = 0
+Transmogrification.TokenEntry = 49426
+Transmogrification.TokenAmount = 1
+
+#
+#    요구 사항
+#
+#    Transmogrification.AllowPoor
+#        설명: 하급 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowCommon
+#        설명: 일반 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowUncommon
+#        설명: 고급 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    1
+#
+#    Transmogrification.AllowRare
+#        설명: 희귀 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    1
+#
+#    Transmogrification.AllowEpic
+#        설명: 영웅 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    1
+#
+#    Transmogrification.AllowLegendary
+#        설명: 전설 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowArtifact
+#        설명: 유물 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowHeirloom
+#        설명: 계승품 품질 아이템을 외형 원본과 적용 대상 아이템으로 사용할 수 있게 합니다.
+#        기본값:    1
+#
+#    Transmogrification.AllowTradeable
+#        설명: 거래 가능한 아이템을 허용합니다(예: 인스턴스에서 획득 후 2시간의 거래 유예 기간 중인 아이템).
+#        기본값:    0
+#
+#    Transmogrification.AllowMixedArmorTypes
+#        설명: 예를 들어 천 아이템에 판금 외형을 적용하는 등 서로 다른 방어구 유형 간의 형상변환을 허용합니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowLowerTiers
+#        설명: 플레이어가 착용할 수 있는 모든 방어구 등급을 사용할 수 있게 합니다(예: 전사는 판금->천 | 마법사는 천).
+#        기본값:    0
+#
+#    Transmogrification.AllowMixedOffhandArmorTypes
+#        설명: 방패, 보조장비(예: 등불), 소형 방패를 서로 바꾸어 사용할 수 있게 합니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowMixedWeaponTypes
+#        설명: 예를 들어 도끼를 단검 외형으로 형상변환할 수 있게 합니다
+#        선택 가능한 옵션:
+#            기본값:     0 - STRICT - 원래 Blizzard 4.3 형상변환처럼 완전히 제한 - 무기는 같은 무기 유형이어야 함 (예외: 총, 석궁, 활)
+#                        1 - MODERN - 이후 정식 서버 WoW처럼 검을 도끼로 형상변환하는 등 허용
+#                        2 - FULL - 제한 없음, 어떤 무기든 다른 어떤 무기로도 형상변환 허용
+#
+#    Transmogrification.AllowMixedWeaponHandedness
+#        설명: 일반적으로 주 장비와 보조 장비 무기는 같은 유형으로만 형상변환할 수 있습니다. 활성화하면 이 제한이 해제됩니다.
+#              AllowMixedWeaponTypes 가 FULL로 설정되어 있으면 필요하지 않습니다.
+#        기본값:    0
+#
+#    Transmogrification.AllowFishingPoles
+#        설명: 낚싯대의 형상변환을 허용합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqRace
+#        설명: 외형 원본 아이템의 요구 종족을 무시합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqClass
+#        설명: 외형 원본 아이템의 요구 직업을 무시합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqSkill
+#        설명: 외형 원본 아이템의 요구 기술을 무시합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqSpell
+#        설명: 외형 원본 아이템의 요구 주문을 무시합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqLevel
+#        설명: 외형 원본 아이템의 요구 레벨을 무시합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqEvent
+#        설명: 외형 원본 아이템의 요구 이벤트를 무시합니다.
+#        기본값:    0
+#
+#    Transmogrification.IgnoreReqStats
+#        설명: 외형 원본 아이템의 능력치 개수 > 0 요구 조건을 무시합니다.
+#        기본값:    0
+
+
+Transmogrification.AllowPoor = 0
+Transmogrification.AllowCommon = 0
+Transmogrification.AllowUncommon = 1
+Transmogrification.AllowRare = 1
+Transmogrification.AllowEpic = 1
+Transmogrification.AllowLegendary = 0
+Transmogrification.AllowArtifact = 0
+Transmogrification.AllowHeirloom = 1
+Transmogrification.AllowTradeable = 0
+
+Transmogrification.AllowMixedArmorTypes = 0
+Transmogrification.AllowLowerTiers = 0
+Transmogrification.AllowMixedOffhandArmorTypes = 0
+Transmogrification.AllowMixedWeaponTypes = 0
+Transmogrification.AllowMixedWeaponHandedness = 0
+Transmogrification.AllowFishingPoles = 0
+
+Transmogrification.IgnoreReqRace = 0
+Transmogrification.IgnoreReqClass = 0
+Transmogrification.IgnoreReqSkill = 0
+Transmogrification.IgnoreReqSpell = 0
+Transmogrification.IgnoreReqLevel = 0
+Transmogrification.IgnoreReqEvent = 0
+Transmogrification.IgnoreReqStats = 0
+
+#
+#    세트 기능
+#
+#    Transmogrification.EnableSets
+#        설명: 세트 기능을 활성화하거나 비활성화합니다. 영구적으로 비활성화하려면 Transmogrification.h를 확인하세요.
+#        기본값:    1
+#
+#    Transmogrification.MaxSets
+#        설명: 플레이어가 저장할 수 있는 세트의 최대 개수입니다(절대 상한은 25).
+#        기본값:    10
+#
+#    Transmogrification.EnableSetInfo
+#        설명: 세트 기능의 안내 버튼을 활성화하거나 비활성화합니다.
+#        기본값:    1
+#
+#    Transmogrification.SetNpcText
+#        설명: 세트 기능 정보 메뉴에 사용할 npc_text 항목
+#        기본값:    601084
+#
+#    Transmogrification.SetCostModifier
+#        설명: 기본 금전 비용(모든 비용의 합계)에 적용할 배율입니다(기본 비용을 없애려면 0으로 변경하세요).
+#        기본값:    3.0
+#
+#    Transmogrification.SetCopperCost
+#        설명: 다른 비용에 추가되는 비용입니다(음수도 가능합니다).
+#        기본값:    0
+
+Transmogrification.EnableSets = 1
+Transmogrification.MaxSets = 10
+
+Transmogrification.EnableSetInfo = 1
+Transmogrification.SetNpcText = 601084
+
+Transmogrification.SetCostModifier = 3.0
+Transmogrification.SetCopperCost = 0
+
+#
+#    형상변환 플러스(TRANSMOG PLUS)
+#
+#    Transmogrification.EnablePlus
+#        설명: TransmogPlus를 활성화하거나 비활성화합니다.
+#        기본값:     0
+#
+#    Transmogrification.MembershipLevels
+#        설명: acore_cms_subscriptions의 멤버십 등급 ID입니다.
+#        예:          Transmogrification.MembershipLevels = "1,2,3"
+#        기본값:      ""
+#
+#    Transmogrification.MembershipLevelsLegendary
+#        설명: 전설 아이템 사용 자격을 정의하는 acore_cms_subscriptions의 멤버십 등급 ID
+#        예:          Transmogrification.MembershipLevelsLegendary = "1,2,3"
+#        기본값:      ""
+#
+#    Transmogrification.MembershipLevelsPet
+#        설명: 형상변환 애완동물 사용 자격을 정의하는 acore_cms_subscriptions의 멤버십 등급 ID
+#        예:          Transmogrification.MembershipLevelsPet = "1,2,3"
+#        기본값:      ""
+#
+#    Transmogrification.MembershipLevelsSkipLevelReq
+#        설명: 형상변환 시 레벨 조건 검사를 건너뛸 자격을 정의하는 acore_cms_subscriptions의 멤버십 등급 ID
+#        예:          Transmogrification.MembershipLevelsSkipLevelReq = "1,2,3"
+#        기본값:      ""
+#
+#    Transmogrification.PetSpellId
+#        설명: spell_dbc 테이블에서 형상변환 애완동물에 사용하는 ID
+#        예:          Transmogrification.PetSpellId = 2000100
+#        기본값:      2000100
+#
+
+Transmogrification.EnablePlus = 0
+Transmogrification.MembershipLevels = ""
+Transmogrification.MembershipLevelsLegendary = ""
+Transmogrification.MembershipLevelsPet = ""
+Transmogrification.MembershipLevelsSkipLevelReq = ""
+Transmogrification.PetSpellId = 200100
+
+#
+###################################################################################################

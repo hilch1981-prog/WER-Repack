@@ -1,0 +1,75 @@
+name: core-build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      core_ref:
+        description: "AzerothCore (Playerbot fork) branch"
+        required: true
+        default: "Playerbot"
+      playerbots_ref:
+        description: "mod-playerbots branch"
+        required: true
+        default: "master"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    name: Linux / AzerothCore Playerbot
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout AzerothCore (Playerbot fork)
+        uses: actions/checkout@v4
+        with:
+          repository: mod-playerbots/azerothcore-wotlk
+          ref: ${{ github.event.inputs.core_ref || 'Playerbot' }}
+          path: azerothcore
+          submodules: recursive
+
+      - name: Checkout mod-playerbots
+        uses: actions/checkout@v4
+        with:
+          repository: mod-playerbots/mod-playerbots
+          ref: ${{ github.event.inputs.playerbots_ref || 'master' }}
+          path: azerothcore/modules/mod-playerbots
+
+      - name: Checkout mod-rndbot-sync
+        uses: actions/checkout@v4
+        with:
+          path: azerothcore/modules/mod-rndbot-sync
+
+      - name: Verify mod-playerbots dependency
+        shell: bash
+        run: |
+          test -d azerothcore/modules/mod-playerbots
+          find azerothcore/modules/mod-playerbots -name "PlayerbotFactory.h" -print -quit | grep -q .
+
+      - name: Install Linux requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git cmake make gcc g++ \
+            libmysqlclient-dev libssl-dev libbz2-dev \
+            libreadline-dev libncurses-dev mysql-server libboost-all-dev
+
+      - name: Configure CMake
+        run: |
+          cmake -S azerothcore -B build-linux \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER=gcc \
+            -DCMAKE_CXX_COMPILER=g++ \
+            -DTOOLS=0
+
+      - name: Build worldserver
+        run: |
+          cmake --build build-linux --target worldserver --parallel 2

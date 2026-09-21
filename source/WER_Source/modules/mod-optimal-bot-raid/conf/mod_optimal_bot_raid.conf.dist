@@ -1,0 +1,138 @@
+[worldserver]
+#
+# 최적 봇 공격대 구성 설정
+#
+# ==============================================================================
+# 선발 알고리즘의 가중치
+# ==============================================================================
+# 봇 선발 알고리즘은 각 봇의 최종 점수를 계산합니다.
+# 후보 중 최고 장비 봇을 기준으로 정규화한 장비 점수와
+# 해당 봇이 제공하는 고유 강화 효과의 조합 점수를 함께 사용합니다.
+# 
+# OptimalBotRaid.Algo.Weight.GS
+#    설명: 봇의 정규화된 장비 점수에 적용할 가중치.
+#    범위: 0.0~10.0
+#    기본값:     0.5
+OptimalBotRaid.Algo.Weight.GS = 0.5
+
+# OptimalBotRaid.Algo.Weight.Buff
+#    설명: 봇의 강화 효과 조합 점수에 적용할 가중치.
+#    범위: 0.0~10.0
+#    기본값:     0.5
+OptimalBotRaid.Algo.Weight.Buff = 0.5
+
+# ==============================================================================
+# 강화 효과 조합 점수
+# ==============================================================================
+# 비트 행렬로 리치 왕의 분노 강화 효과의 중복 여부를 계산합니다.
+# 공격대에 아직 없는 강화 효과를 제공하는 봇에게 아래 점수를 추가합니다.
+#
+# 모든 보너스 값의 범위: 0.0~10.0
+#
+# OptimalBotRaid.Algo.Bonus.UniqueBuff: 고유 강화 효과 하나당 기본 추가 점수. 기본값: 0.2
+# OptimalBotRaid.Algo.Bonus.Bloodlust: 피의 욕망/영웅심에 적용할 특별 보너스. 기본값: 0.4
+# OptimalBotRaid.Algo.Bonus.Replenishment: 마나 회복 강화 효과의 특별 보너스. 기본값: 0.2
+OptimalBotRaid.Algo.Bonus.UniqueBuff = 0.2
+OptimalBotRaid.Algo.Bonus.Bloodlust = 0.4
+OptimalBotRaid.Algo.Bonus.Replenishment = 0.2
+
+# ==============================================================================
+# 인원수별 역할 정원
+# ==============================================================================
+# 우두머리 전투 생존을 위해 아래 역할 정원을 엄격히 적용합니다.
+# 근접 광역 공격에 몰살당하지 않도록 근접보다 원거리 공격 담당을 우선합니다.
+# 원거리 공격 담당 수는 나머지 빈자리에서 자동 계산합니다.
+# 5인 파티에 방어 담당 10명처럼 잘못 설정하면 허용 범위로 제한합니다.
+# 모든 값의 범위: 0~해당 파티·공격대 인원수
+
+# 5인 던전
+OptimalBotRaid.Quota.5.Tanks = 1
+OptimalBotRaid.Quota.5.Healers = 1
+OptimalBotRaid.Quota.5.MeleeMax = 1
+
+# 10인 공격대
+OptimalBotRaid.Quota.10.Tanks = 2
+OptimalBotRaid.Quota.10.Healers = 2
+OptimalBotRaid.Quota.10.MeleeMax = 2
+
+# 15인 시나리오·전장
+OptimalBotRaid.Quota.15.Tanks = 2
+OptimalBotRaid.Quota.15.Healers = 3
+OptimalBotRaid.Quota.15.MeleeMax = 3
+
+# 20인 공격대
+OptimalBotRaid.Quota.20.Tanks = 2
+OptimalBotRaid.Quota.20.Healers = 4
+OptimalBotRaid.Quota.20.MeleeMax = 5
+
+# 25인 공격대
+OptimalBotRaid.Quota.25.Tanks = 2
+OptimalBotRaid.Quota.25.Healers = 5
+OptimalBotRaid.Quota.25.MeleeMax = 6
+
+# 40인 오리지널 공격대(평균 레벨 60 이하)
+OptimalBotRaid.Quota.40Vanilla.Tanks = 4
+OptimalBotRaid.Quota.40Vanilla.Healers = 10
+OptimalBotRaid.Quota.40Vanilla.MeleeMax = 10
+
+# 40인 리치 왕의 분노 공격대(평균 레벨 60 초과)
+OptimalBotRaid.Quota.40WotLK.Tanks = 3
+OptimalBotRaid.Quota.40WotLK.Healers = 8
+OptimalBotRaid.Quota.40WotLK.MeleeMax = 10
+
+# ==============================================================================
+# 직업·특성별 봇 AI 성능 보정 배율
+# ==============================================================================
+# 특성별 플레이어봇 AI의 실제 수행 능력을 고려하여
+# 장비 점수에 고정 배율을 적용합니다. 특성 위치: 왼쪽=0, 가운데=1, 오른쪽=2.
+# 모든 값의 범위: 0.1~10.0
+
+# 죽음의 기사(0:혈기, 1:냉기, 2:부정)
+OptimalBotRaid.AI.DK.0 = 1.2
+OptimalBotRaid.AI.DK.1 = 1.5
+OptimalBotRaid.AI.DK.2 = 0.6
+
+# 성기사(0:신성, 1:보호, 2:징벌)
+OptimalBotRaid.AI.Paladin.0 = 1.5
+OptimalBotRaid.AI.Paladin.1 = 1.5
+OptimalBotRaid.AI.Paladin.2 = 1.0
+
+# 마법사(0:비전, 1:화염, 2:냉기)
+OptimalBotRaid.AI.Mage.0 = 1.5
+OptimalBotRaid.AI.Mage.1 = 1.1
+OptimalBotRaid.AI.Mage.2 = 1.1
+
+# 주술사(0:정기, 1:고양, 2:복원)
+OptimalBotRaid.AI.Shaman.0 = 1.2
+OptimalBotRaid.AI.Shaman.1 = 1.0
+OptimalBotRaid.AI.Shaman.2 = 1.5
+
+# 흑마법사(0:고통, 1:악마, 2:파괴)
+OptimalBotRaid.AI.Warlock.0 = 1.0
+OptimalBotRaid.AI.Warlock.1 = 1.0
+OptimalBotRaid.AI.Warlock.2 = 1.5
+
+# 드루이드(0:조화, 1:야성, 2:복원)
+OptimalBotRaid.AI.Druid.0 = 1.0
+OptimalBotRaid.AI.Druid.1 = 0.5
+OptimalBotRaid.AI.Druid.2 = 1.0
+
+# 사제(0:수양, 1:신성, 2:암흑)
+OptimalBotRaid.AI.Priest.0 = 0.6
+OptimalBotRaid.AI.Priest.1 = 1.0
+OptimalBotRaid.AI.Priest.2 = 1.2
+
+# 사냥꾼(0:야수, 1:사격, 2:생존)
+OptimalBotRaid.AI.Hunter.0 = 1.1
+OptimalBotRaid.AI.Hunter.1 = 1.2
+OptimalBotRaid.AI.Hunter.2 = 1.2
+
+# 도적(0:암살, 1:전투, 2:잠행)
+OptimalBotRaid.AI.Rogue.0 = 0.8
+OptimalBotRaid.AI.Rogue.1 = 1.5
+OptimalBotRaid.AI.Rogue.2 = 0.8
+
+# 전사(0:무기, 1:분노, 2:방어)
+OptimalBotRaid.AI.Warrior.0 = 1.0
+OptimalBotRaid.AI.Warrior.1 = 1.0
+OptimalBotRaid.AI.Warrior.2 = 1.2

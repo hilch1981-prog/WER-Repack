@@ -1,0 +1,95 @@
+[worldserver]
+
+########################################
+# mod-rndbot-sync 설정
+########################################
+#
+# 설정한 비율의 랜덤봇을 현재 접속한 실제 유저 중 최고 레벨 부근에 유지합니다.
+# 최고 유저 레벨에 TargetBand를 더한 값이 전체 봇 레벨 상한으로 작용합니다.
+# AllowDownleveling이 켜져 있으면 상한보다 높은 봇의 레벨을 낮춥니다.
+
+#    RndBotSync.Enabled
+#        기본값: 1. 0이면 끕니다.
+#        아래 두 설정 중 하나라도 켜져 있으면 로그에 오류를 남기고 이 모듈을 끕니다:
+#        AiPlayerbot.LevelBrackets.Enabled 또는 AiPlayerbot.ResetBotLevel.Enabled
+#        mod-playerbots 자체 레벨 조정과 이 기능을 동시에 실행하면
+#        서로 같은 봇의 레벨을 덮어쓰는 충돌이 발생하기 때문입니다.
+RndBotSync.Enabled = 1
+
+#    RndBotSync.CheckFrequency
+#        안전 점검 주기(초). 0이면 접속·레벨 상승 이벤트에만 반응합니다.
+#        기본값: 300
+RndBotSync.CheckFrequency = 300
+
+#    RndBotSync.TargetPercent
+#        목표 레벨 범위에 유지할 적격 랜덤봇 비율. 기본값: 30
+RndBotSync.TargetPercent = 30
+
+#    RndBotSync.TargetBand
+#        목표 레벨에서 위아래로 허용할 레벨 차이. 기본값: 3
+RndBotSync.TargetBand = 3
+
+#    RndBotSync.ProcessLimit
+#        한 번에 조정할 최대 봇 수. 레벨 상승·하락이 이 한도를 공유합니다.
+#        0이면 제한 없음. 기본값: 5
+RndBotSync.ProcessLimit = 5
+
+#    RndBotSync.AllowDownleveling
+#        1이면 상한(실제 유저 최고 레벨 + TargetBand)보다 높은 봇을
+#        1부터 상한 사이의 무작위 레벨로 낮춥니다. 따라서 저레벨 유저만 접속하면
+#        전체 봇 레벨이 그 유저 수준으로 내려갈 수 있습니다. 0이면 봇 레벨은
+#        올라가기만 하며 내려가지 않습니다. 기본값: 1
+RndBotSync.AllowDownleveling = 1
+
+#    RndBotSync.IgnoreGuildBotsWithRealPlayers
+#        실제 유저가 한 명이라도 소속된 길드의 봇은 제외합니다.
+#        유저의 접속 여부와 관계없이 적용합니다. 기본값: 1
+RndBotSync.IgnoreGuildBotsWithRealPlayers = 1
+
+#    RndBotSync.IgnoreFriendListed
+#        실제 유저의 친구 목록에 있는 봇을 제외합니다. 기본값: 1
+RndBotSync.IgnoreFriendListed = 1
+
+#    RndBotSync.IgnoreArenaTeamBots
+#        투기장 팀 소속 봇을 제외합니다. 기본값: 1
+RndBotSync.IgnoreArenaTeamBots = 1
+
+#    RndBotSync.IgnoreGroupedBots
+#        파티·공격대 소속 봇은 제외하여 던전 등을 진행하는 도중에
+#        레벨이 바뀌지 않도록 합니다. 기본값: 1
+RndBotSync.IgnoreGroupedBots = 1
+
+#    RndBotSync.ExcludeNames
+#        조정하지 않을 봇 이름 목록. 쉼표로 구분하며 대소문자는 구분하지 않습니다. 기본값: 빈 문자열
+RndBotSync.ExcludeNames =
+
+#    RndBotSync.GuildCacheRefreshFrequency
+#        실제 유저의 길드·친구 정보 캐시를 갱신하는 주기(초)입니다.
+#        기본값: 600
+RndBotSync.GuildCacheRefreshFrequency = 600
+
+#    RndBotSync.DeathKnightProgression.Enabled
+#        1이면 실제 유저 계정이 필요한 개인 진행 단계에 도달할 때까지
+#        죽음의 기사 봇의 접속을 막습니다. 0이면
+#        AiPlayerbot.DisableDeathKnightLogin 설정을 변경하지 않습니다.
+#        기본값: 0
+RndBotSync.DeathKnightProgression.Enabled = 0
+
+#    RndBotSync.DeathKnightProgression.RequiredState
+#        죽음의 기사 봇 해금에 필요한 ProgressionState(1~18). 13은 리치 왕의 분노 콘텐츠입니다.
+#        기본값: 13
+RndBotSync.DeathKnightProgression.RequiredState = 13
+
+#    RndBotSync.IlvlSync.Enabled
+#        1이면 랜덤봇 장비의 아이템 레벨 상한을 접속한 실제 유저의 최고 장비 수준에 맞춥니다.
+#        실행 중 AiPlayerbot.RandomGearScoreLimit 값을 조정하며, 유저의 장비 수준은
+#        착용 장비와 가방에 보유한 최상 장비를 기준으로 계산합니다.
+#        신규 생성 및 재설정 봇에 상한을 적용합니다. 아이템 품질은 바꾸지 않습니다.
+#        0이면 기존 설정의 RandomGearScoreLimit으로 복원합니다.
+#        기본값: 1
+RndBotSync.IlvlSync.Enabled = 1
+
+#    RndBotSync.FullDebugMode / LiteDebugMode
+#        상세 로그 / 요약 로그. 기본값: 0
+RndBotSync.FullDebugMode = 0
+RndBotSync.LiteDebugMode = 0

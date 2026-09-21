@@ -1,0 +1,349 @@
+[worldserver]
+
+###############################################################################
+# 경매장 봇 설정
+#
+#    AuctionHouseBot.DEBUG
+#        디버깅 출력을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.DEBUG_CONFIG
+#        설정 관련 디버깅 출력을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.DEBUG_FILTERS
+#        필터 관련 디버깅 출력을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.DEBUG_BUYER
+#        구매자 관련 디버깅 출력을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.DEBUG_SELLER
+#        판매자 관련 디버깅 출력을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.TRACE_SELLER
+#        판매된 아이템의 추적을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.TRACE_BUYER
+#        구매한 아이템의 추적을 활성화하거나 비활성화합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.EnableSeller
+#        AHBot 중 아이템을 경매에 등록하는 기능을 활성화/비활성화합니다
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.EnableBuyer
+#        AHBot 중 플레이어의 아이템을 구매하는 기능을 활성화/비활성화합니다
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.UseBuyPriceForSeller
+#        판매자가 입찰가를 정할 때 BuyPrice와 SellPrice 중 어느 가격을 사용할지 설정합니다.
+#    기본값 0 (SellPrice 사용)
+#
+#    AuctionHouseBot.UseBuyPriceForBuyer
+#        구매자가 입찰가를 정할 때 BuyPrice와 SellPrice 중 어느 가격을 사용할지 설정합니다.
+#    기본값 0 (SellPrice 사용)
+#
+#    AuctionHouseBot.UseMarketPriceForSeller
+#        판매자가 경매에 시장 가격을 사용할지 설정합니다.
+#    기본값 0 (비활성)
+#
+#    AuctionHouseBot.MarketResetThreshold
+#        일반 가격이 적용되기 전에 필요한 동일 아이템의 경매 수입니다.
+#        이 임계값에 도달하기 전에는 휴리스틱에 따라 가격이 오르거나 내립니다.
+#        시장 가격이 빠르게 반응하게 하려면 이 값을 낮게 설정하고,
+#        가격 변동을 완만하게 하려면 높게 설정하세요.
+#    기본값 25
+#
+#    경매장 봇 캐릭터 데이터
+#        AuctionHouseBot.Account 는 경매장 봇으로 사용할 플레이어의
+#         계정 번호입니다(realmd->account 테이블 기준).
+#        AuctionHouseBot.GUID 는 경매장 봇으로 사용할 플레이어의
+#         GUID입니다(characters->characters 테이블 기준).
+#    기본값: 0 (경매장 봇 비활성)
+#
+#    AuctionHouseBot.ItemsPerCycle
+#        대량 작업 중 경매장에 추가하거나 경매장에서 제거할 아이템 수입니다.
+#    기본값 200
+#
+#    AuctionHouseBot.ConsiderOnlyBotAuctions
+#        등록된 경매 수를 집계할 때 플레이어 경매는 무시하고 봇 경매만 계산합니다.
+#        이렇게 하면 플레이어가 많이 접속해 있어도 시장에 일정한 배경 물량을 유지할 수 있습니다.
+#        이 옵션을 설정하지 않으면 플레이어 경매도 유효 경매 수에 포함되므로, 봇이 시장에서 활동하게 하려면
+#        maxitems SQL 값을 크게 늘려야 합니다. 이 옵션을 설정하면 플레이어 경매는 고려하지 않습니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DuplicatesCount
+#        봇이 시장에 판매 등록할 수 있는 동일 아이템 묶음의 최대 개수입니다.
+#        0으로 설정하면 제한이 없습니다.
+#    기본값 0
+#
+#    AuctionHouseBot.DivisibleStacks
+#        아이템의 최대 묶음 수량에 따라 판매 묶음의 수량을 정합니다.
+#        예를 들어 최대 묶음 수량이 20인 아이템은 무작위 수량이 아니라 5, 10, 15, 20개씩 묶어 판매합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.ElapsingTimeClass
+#        판매 등록한 아이템의 경매 지속 시간입니다. 다음 세 가지 유형이 있습니다:
+#        0 = 긴 경매, 경매가 1~3일 동안 진행됩니다
+#        1 = 중간 경매, 경매가 1~24시간 동안 진행됩니다
+#        2 = 짧은 경매, 경매가 10~60분 동안 진행됩니다
+#    기본값 1
+#
+###############################################################################
+
+AuctionHouseBot.DEBUG = 0
+AuctionHouseBot.DEBUG_CONFIG = 0
+AuctionHouseBot.DEBUG_FILTERS = 0
+AuctionHouseBot.DEBUG_BUYER = 0
+AuctionHouseBot.DEBUG_SELLER = 0
+AuctionHouseBot.TRACE_SELLER = 0
+AuctionHouseBot.TRACE_BUYER = 0
+
+AuctionHouseBot.EnableSeller = 0
+AuctionHouseBot.EnableBuyer = 0
+AuctionHouseBot.UseBuyPriceForSeller = 0
+AuctionHouseBot.UseBuyPriceForBuyer = 0
+AuctionHouseBot.UseMarketPriceForSeller = 0
+AuctionHouseBot.MarketResetThreshold = 25
+AuctionHouseBot.Account = 0
+AuctionHouseBot.GUID = 0
+AuctionHouseBot.ItemsPerCycle = 200
+AuctionHouseBot.ConsiderOnlyBotAuctions = 0
+AuctionHouseBot.DuplicatesCount = 0
+AuctionHouseBot.DivisibleStacks = 0
+AuctionHouseBot.ElapsingTimeClass = 1
+
+###############################################################################
+# 경매장 봇 필터 1부
+#
+#    AuctionHouseBot.VendorItems
+#        상인에게서 구매할 수 있는 아이템을 포함합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.VendorTradeGoods
+#        상인에게서 구매할 수 있는 거래용품을 포함합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.LootItems
+#        전리품 획득이나 낚시로 얻을 수 있는 아이템을 포함합니다.
+#    기본값 1 (참)
+#
+#    AuctionHouseBot.LootTradeGoods
+#        전리품 획득이나 낚시로 얻을 수 있는 거래용품을 포함합니다.
+#    기본값 1 (참)
+#
+#    AuctionHouseBot.OtherItems
+#        기타 아이템을 포함합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.OtherTradeGoods
+#        기타 거래용품을 포함합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.ProfessionItems
+#        전문 기술에 필요한 아이템을 포함합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.Bonding_types
+#        판매자가 경매에 등록할 수 있는 아이템의 귀속 유형을 지정합니다.
+#            No_Bind
+#             기본값 1 (참)
+#            Bind_When_Picked_Up
+#             기본값 0 (거짓)
+#            Bind_When_Equipped
+#             기본값 1 (참)
+#            Bind_When_Use
+#             기본값 1 (참)
+#            Bind_Quest_Item
+#             기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisablePermEnchant
+#        영구 마법부여가 적용된 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableConjured
+#        창조된 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableGems
+#        보석을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableMoney
+#        화폐로 사용되는 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableMoneyLoot
+#        전리품으로 돈이 나오는 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableLootable
+#        전리품으로 다른 아이템이 나오는 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableKeys
+#        열쇠로 사용되는 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableDuration
+#        지속 시간이 있는 아이템을 제외합니다.
+#    기본값 0 (거짓)
+#
+#    AuctionHouseBot.DisableBOP_Or_Quest_NoReqLevel
+#        획득 시 귀속(BOP) 아이템이나 퀘스트 아이템 중
+#        요구 레벨이 아이템 레벨보다 낮은 아이템을 제외합니다.
+#        (10레벨 캐릭터가 60레벨 무기나 방어구를 사용하는 것을 방지합니다)
+#        (추가적인 개선이 필요할 수 있습니다)
+#    기본값 0 (거짓)
+#
+###############################################################################
+
+AuctionHouseBot.VendorItems = 0
+AuctionHouseBot.VendorTradeGoods = 0
+AuctionHouseBot.LootItems = 1
+AuctionHouseBot.LootTradeGoods = 1
+AuctionHouseBot.OtherItems = 0
+AuctionHouseBot.OtherTradeGoods = 0
+AuctionHouseBot.ProfessionItems = 0
+AuctionHouseBot.No_Bind = 1
+AuctionHouseBot.Bind_When_Picked_Up = 0
+AuctionHouseBot.Bind_When_Equipped = 1
+AuctionHouseBot.Bind_When_Use = 1
+AuctionHouseBot.Bind_Quest_Item = 0
+AuctionHouseBot.DisablePermEnchant = 0
+AuctionHouseBot.DisableConjured = 0
+AuctionHouseBot.DisableGems = 0
+AuctionHouseBot.DisableMoney = 0
+AuctionHouseBot.DisableMoneyLoot = 0
+AuctionHouseBot.DisableLootable = 0
+AuctionHouseBot.DisableKeys = 0
+AuctionHouseBot.DisableDuration = 0
+AuctionHouseBot.DisableBOP_Or_Quest_NoReqLevel = 0
+
+###############################################################################
+# 경매장 봇 필터 2부
+#
+#     이 필터들은 불리언 값(0 또는 1)을 사용하며,
+#     이름에 지정된 직업 전용 아이템을 제외합니다.
+#     (UnusedClass는 어떤 이유로 건너뛴 직업 번호 10입니다)
+#     기본값 0 (허용)
+#
+###############################################################################
+
+AuctionHouseBot.DisableWarriorItems = 0
+AuctionHouseBot.DisablePaladinItems = 0
+AuctionHouseBot.DisableHunterItems = 0
+AuctionHouseBot.DisableRogueItems = 0
+AuctionHouseBot.DisablePriestItems = 0
+AuctionHouseBot.DisableDKItems = 0
+AuctionHouseBot.DisableShamanItems = 0
+AuctionHouseBot.DisableMageItems = 0
+AuctionHouseBot.DisableWarlockItems = 0
+AuctionHouseBot.DisableUnusedClassItems = 0
+AuctionHouseBot.DisableDruidItems = 0
+
+###############################################################################
+# 경매장 봇 필터 3부
+#
+#    AuctionHouseBot.DisabledItems
+#        판매자가 특정 아이템을 등록하지 못하게 합니다.
+#        (더 이상 사용되지 않습니다. "mod_auctionhousebot_disabled_items" 테이블을 참조하세요)
+#
+#    AuctionHouseBot.DisableItemsBelowLevel
+#        판매자가 아이템 레벨이 이 값보다 낮은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsAboveLevel
+#        판매자가 아이템 레벨이 이 값보다 높은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsBelowLevel
+#        판매자가 아이템 레벨이 이 값보다 낮은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsAboveLevel
+#        판매자가 아이템 레벨이 이 값보다 높은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsBelowGUID
+#        판매자가 GUID가 이 값보다 작은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsAboveGUID
+#        판매자가 GUID가 이 값보다 큰 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsBelowGUID
+#        판매자가 GUID가 이 값보다 작은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsAboveGUID
+#        판매자가 GUID가 이 값보다 큰 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsBelowReqLevel
+#        판매자가 요구 레벨이 이 값보다 낮은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsAboveReqLevel
+#        판매자가 요구 레벨이 이 값보다 높은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsBelowReqLevel
+#        판매자가 요구 레벨이 이 값보다 낮은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsAboveReqLevel
+#        판매자가 요구 레벨이 이 값보다 높은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsBelowReqSkillRank
+#        판매자가 요구 기술 숙련도가 이 값보다 낮은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableItemsAboveReqSkillRank
+#        판매자가 요구 기술 숙련도가 이 값보다 높은 아이템을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsBelowReqSkillRank
+#        판매자가 요구 기술 숙련도가 이 값보다 낮은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+#    AuctionHouseBot.DisableTGsAboveReqSkillRank
+#        판매자가 요구 기술 숙련도가 이 값보다 높은 거래용품을 등록하지 못하게 합니다.
+#    기본값 0 (꺼짐)
+#
+###############################################################################
+
+AuctionHouseBot.DisableItemsBelowLevel = 0
+AuctionHouseBot.DisableItemsAboveLevel = 0
+AuctionHouseBot.DisableTGsBelowLevel = 0
+AuctionHouseBot.DisableTGsAboveLevel = 0
+AuctionHouseBot.DisableItemsBelowGUID = 0
+AuctionHouseBot.DisableItemsAboveGUID = 0
+AuctionHouseBot.DisableTGsBelowGUID = 0
+AuctionHouseBot.DisableTGsAboveGUID = 0
+AuctionHouseBot.DisableItemsBelowReqLevel = 0
+AuctionHouseBot.DisableItemsAboveReqLevel = 0
+AuctionHouseBot.DisableTGsBelowReqLevel = 0
+AuctionHouseBot.DisableTGsAboveReqLevel = 0
+AuctionHouseBot.DisableItemsBelowReqSkillRank = 0
+AuctionHouseBot.DisableItemsAboveReqSkillRank = 0
+AuctionHouseBot.DisableTGsBelowReqSkillRank = 0
+AuctionHouseBot.DisableTGsAboveReqSkillRank = 0
+
+###############################################################################
+# 경매장 봇 필터 4부
+#
+#    AuctionHouseBot.SellerWhiteList
+#        제외 아이템 테이블의 값을 무시하고 선택한 아이템만 판매하도록 허용합니다.
+#        여기에는 아이템 템플릿 ID를 쉼표로 구분하여 입력해야 합니다(예: "1, 2, 3").
+#    기본값 "" (비어 있음)
+#
+###############################################################################
+
+AuctionHouseBot.SellerWhiteList = ""
