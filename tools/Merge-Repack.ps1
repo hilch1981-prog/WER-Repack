@@ -1,10 +1,11 @@
 [CmdletBinding()]
 param(
-    [string]$InputDirectory = $PSScriptRoot,
+    [string]$InputDirectory = '',
     [string]$OutputPath = ''
 )
 $ErrorActionPreference = 'Stop'
 $archiveName = 'WER_REPACK_VER.1.1.0.zip'
+if (-not $InputDirectory) { $InputDirectory = $PSScriptRoot }
 $inputRoot = (Resolve-Path -LiteralPath $InputDirectory).Path
 if (-not $OutputPath) { $OutputPath = Join-Path $inputRoot $archiveName }
 $outputFull = [IO.Path]::GetFullPath($OutputPath)
@@ -18,7 +19,7 @@ foreach ($line in (Get-Content -LiteralPath $checksumPath)) {
         $hashes[$Matches[2]] = $Matches[1].ToLowerInvariant()
     }
 }
-$partNames = @($archiveName + '.001', $archiveName + '.002')
+$partNames = @(($archiveName + '.001'), ($archiveName + '.002'))
 foreach ($name in @($partNames) + @($archiveName)) {
     if (-not $hashes.ContainsKey($name)) { throw "Missing checksum: $name" }
 }
