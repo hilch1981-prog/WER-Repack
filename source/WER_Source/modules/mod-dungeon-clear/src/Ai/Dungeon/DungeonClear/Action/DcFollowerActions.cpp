@@ -1944,8 +1944,17 @@ bool DungeonClearLeaderAssistAction::Execute(Event /*event*/)
         context->GetValue<Unit*>(DcKey::Stock::CurrentTarget)->Set(target);
         if (!bot->IsInCombat())
             bot->SetInCombatWith(target);
+        // Engage for real, the way stock AttackAction does: switch to the combat
+        // engine and start the attack. Only an attack switches the engine, and
+        // a tank already combat-flagged by its party (no victim, nothing on it)
+        // sat on the non-combat engine with this "succeeding" every tick and
+        // nothing happening — while Raiders shot a DPS 23yd away (Pull Lab
+        // gundrak-ranged-standoff). The combat engine's rotation, taunt and
+        // reach take it from here.
+        botAI->ChangeEngine(BOT_STATE_COMBAT);
+        bot->Attack(target, botAI->IsMelee(bot));
         DC_PULL_TRACE("[DC:{}] leader assist: in sight of party fight ({:.1f}yd) "
-                      "-> took threat, combat engine takes over",
+                      "-> attacking, combat engine takes over",
                       bot->GetName(), bot->GetExactDist(target));
         return true;
     }
