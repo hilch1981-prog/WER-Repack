@@ -9,6 +9,10 @@
 | DB realm.address | Radmin 감지 또는 loopback | 동일, settings의 RealmAddress 사용 |
 | DB realm.localAddress | 고정127.0.0.1 | 감지/지정한 address와 동일, 정상 Radmin 시험 정책 |
 | SQL client defaults | defaults-extra-file 및 외부 기본값 상속 가능 | 자기 defaults-file + no-login-paths + 명시 loopback/설정포트, 타 설치 자격증명 상속 금지 |
+| SQL 접속 대상 검증 | 실행파일/포트 존재만 확인 | 모든 SQL 전에 소유 exe의 loopback listener PID 및 실제 HEX(@@datadir)/@@port 대조, 다르면 쓰기/종료 차단 |
+| 한글 DB 경로 확인 | UTF-8 문자열 가정으로 Windows CP949 경로 비교 실패 | HEX 경로 바이트를 실제 Windows GetACP로 복원하고 예상 데이터 폴더와 정확히 비교; 검사 생략 없음 |
+| 준비 중 실패 | 임시 MySQL 잔존 가능 | 이번 실행이 시작한 임시 DB만 identity 확인 후 정상 SHUTDOWN 시도; 임의 process 강제 종료 금지 |
+| 기본 DB 암호 변경 안내 | 일반 변경 권고 | 첫 설치 전에 settings.json에서 선택, 설치 후 JSON만 변경해도 실제 계정 암호는 바뀌지 않음 |
 | DB 기본 포트 | 3306 | 동일. 실제 QA만13309 사용, 배포 기본에 시험 포트 넣지 않음 |
 | 로그인 / 월드 | 3724 / 59823, bind0.0.0.0 | 동일, 방화벽 자동 변경 없음 |
 | AiPlayerbot.MinRandomBots/MaxRandomBots | 2000 / 2000 | 동일 |
@@ -30,4 +34,4 @@
 
 ## English
 
-This ledger applies to new distribution copies only, not production. Branding and realm/local-address consistency are updated; the SQL client is isolated from global defaults/login paths. Existing bot/guild/PvP/LLM policies, exclusions and the 8192-MB memory guard are retained. Only validation uses 20 bots, a private alternate DB port and disabled live LLM. Test accounts/data are never packaged. The inherited PlayerLimit=1 is explicitly recorded pending the user's concurrency preference. Standard extraction tools are supplied, not a new GUI launcher/playermap implementation.
+This ledger applies to new distribution copies only, not production. Branding and realm/local-address consistency are updated; the SQL client is isolated from global defaults/login paths. Every statement first checks the owned loopback listener PID, actual data directory and port. Native Windows path bytes are retrieved as HEX and decoded using the system ACP, fixing Korean-path checks without bypassing them. Existing bot/guild/PvP/LLM policies, exclusions and the 8192-MB memory guard are retained. Only validation uses 20 bots, a private alternate DB port and disabled live LLM. Test accounts/data are never packaged. The inherited PlayerLimit=1 is explicitly recorded pending the user's concurrency preference. Standard extraction tools are supplied, not a new GUI launcher/playermap implementation.

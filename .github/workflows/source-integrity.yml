@@ -28,3 +28,14 @@ jobs:
         run: python3 -B tools/verify-source-manifest.py
       - name: Test read-only runnable ZIP exclusion and integrity checks
         run: python3 -B tools/tests/test_verify_runnable_archive.py
+  console-db-guards:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact packaging helper
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5, pinned
+        with:
+          persist-credentials: false
+      - name: Test isolated SQL guards without a real database
+        shell: powershell
+        run: ./tools/tests/test_console_db_guards.ps1

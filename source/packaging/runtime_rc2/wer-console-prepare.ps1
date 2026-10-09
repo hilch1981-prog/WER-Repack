@@ -6,6 +6,7 @@ Set-Location -LiteralPath $Root
 $Cfg=Get-Content -LiteralPath "$PSScriptRoot/settings.json" -Raw -Encoding UTF8 | ConvertFrom-Json
 if ($Cfg.DbPassword -notmatch '^[a-zA-Z0-9_-]{12,80}$') { throw 'DbPassword는 영문·숫자·하이픈·밑줄 12~80자로 설정하세요.' }
 $Utf8=New-Object Text.UTF8Encoding($false)
+$script:StartedTemporaryMysql=$false
 function WriteUtf8($Path,$Value) { [IO.File]::WriteAllText($Path,$Value,$Utf8) }
 function PortOpen($Port) {
     $c=New-Object Net.Sockets.TcpClient
@@ -13,12 +14,12 @@ function PortOpen($Port) {
 }
 function Owned($Name) { ,@(Get-CimInstance Win32_Process -Filter "Name='$Name'" | Where-Object {$_.ExecutablePath -and [IO.Path]::GetFullPath($_.ExecutablePath) -eq [IO.Path]::GetFullPath((Join-Path $Root $(if($Name -eq 'mysqld.exe'){'mysql/bin/mysqld.exe'}else{$Name})))}) }
 function Event($Message) { Add-Content -LiteralPath "$Root/logs/watchdog.log" -Encoding UTF8 -Value ("{0} {1}" -f (Get-Date -Format o),$Message) }
-function Sql($Text,[switch]$Initial) {
+function InvokePrivateSql($Text,[switch]$Initial) {
     $i=New-Object Diagnostics.ProcessStartInfo
     $i.FileName="$Root/mysql/bin/mysql.exe"
     $defaults=if($Initial){'initial-client.cnf'}else{'client.cnf'}
     # Do not inherit another installation's global defaults or login-path credentials.
-    $i.Arguments="--defaults-file=mysql/$defaults --no-login-paths --protocol=TCP --host=127.0.0.1 --port=$($Cfg.MySqlPort) --default-character-set=utf8mb4 --batch --skip-column-names"
+    $i.Arguments="--defaults-file=mysql/$defaults --no-login-paths --protocol=TCP --host=127.0.0.1 --port=$($Cfg.MySqlPort) --default-character-set=utf8mb4 --batch --raw --skip-column-names"
     $i.WorkingDirectory=$Root; $i.UseShellExecute=$false; $i.CreateNoWindow=$true
     $i.RedirectStandardInput=$true; $i.RedirectStandardOutput=$true; $i.RedirectStandardError=$true
     $i.StandardOutputEncoding=$Utf8; $i.StandardErrorEncoding=$Utf8
@@ -27,6 +28,38 @@ function Sql($Text,[switch]$Initial) {
     $bytes=$Utf8.GetBytes($Text+"`n"); $p.StandardInput.BaseStream.Write($bytes,0,$bytes.Length); $p.StandardInput.BaseStream.Flush(); $p.StandardInput.Close(); $p.WaitForExit()
     $out=$outTask.Result; $err=$errTask.Result; $code=$p.ExitCode; $p.Dispose()
     if($code -ne 0) {throw "MySQL 처리 실패 ($code): $err"}; return $out.Trim()
+}
+function GetNativeFileCodepage {
+    if(-not ('WER.Repack.NativeCodepage' -as [type])){
+        Add-Type -TypeDefinition 'using System.Runtime.InteropServices; namespace WER.Repack { public static class NativeCodepage { [DllImport("kernel32.dll")] public static extern uint GetACP(); } }'
+    }
+    return [int][WER.Repack.NativeCodepage]::GetACP()
+}
+function DecodeMysqlPath($Hex) {
+    if(!$Hex.Length -or $Hex.Length % 2 -ne 0 -or $Hex -notmatch '\A[0-9A-Fa-f]+\z'){throw 'MySQL 경로 바이트 형식이 올바르지 않습니다.'}
+    $bytes=New-Object byte[] ($Hex.Length/2)
+    for($index=0;$index -lt $bytes.Length;$index++){$bytes[$index]=[Convert]::ToByte($Hex.Substring($index*2,2),16)}
+    # Windows MySQL exposes native path bytes; do not misdecode Korean ACP bytes as UTF-8.
+    $encoding=[Text.Encoding]::GetEncoding((GetNativeFileCodepage),[Text.EncoderFallback]::ExceptionFallback,[Text.DecoderFallback]::ExceptionFallback)
+    return $encoding.GetString($bytes)
+}
+function AssertPrivateMysql([switch]$Initial) {
+    $processes=Owned 'mysqld.exe'
+    $listeners=@(Get-NetTCPConnection -State Listen -LocalPort ([int]$Cfg.MySqlPort) -ErrorAction SilentlyContinue)
+    if(!$processes.Count -or !$listeners.Count){throw '이 리팩의 MySQL 프로세스/포트가 확인되지 않습니다.'}
+    foreach($listener in $listeners){
+        if($listener.OwningProcess -notin $processes.ProcessId -or $listener.LocalAddress -notin @('127.0.0.1','::1')){throw 'MySQL 포트가 이 리팩의 로컬 전용 프로세스와 다릅니다. SQL을 실행하지 않습니다.'}
+    }
+    $identity=InvokePrivateSql 'SELECT HEX(@@datadir),@@port;' -Initial:$Initial
+    $fields=$identity.Split("`t")
+    if($fields.Count -ne 2){throw 'MySQL 데이터 경로/포트 확인에 실패했습니다.'}
+    $expected=[IO.Path]::GetFullPath((Join-Path $Root 'mysql/data')).TrimEnd([char]'\')
+    $actual=[IO.Path]::GetFullPath((DecodeMysqlPath $fields[0]).Replace('/','\')).TrimEnd([char]'\')
+    if(![string]::Equals($actual,$expected,[StringComparison]::OrdinalIgnoreCase) -or $fields[1] -ne [string]$Cfg.MySqlPort){throw 'MySQL 데이터 폴더/포트가 이 리팩과 다릅니다. SQL을 실행하지 않습니다.'}
+}
+function Sql($Text,[switch]$Initial) {
+    AssertPrivateMysql -Initial:$Initial
+    return InvokePrivateSql $Text -Initial:$Initial
 }
 function SetConf($Path,$Key,$Value) {
     $s=[IO.File]::ReadAllText($Path,$Utf8)
@@ -66,6 +99,7 @@ function StartMysql {
         if($init.ExitCode -ne 0){throw 'MySQL 초기화 실패: logs/mysql-error.log를 확인하세요.'}
     }
     [void](Start-Process -FilePath "$Root/mysql/bin/mysqld.exe" -ArgumentList '--defaults-file=mysql/my.ini' -WorkingDirectory $Root -WindowStyle Hidden -PassThru)
+    $script:StartedTemporaryMysql=$true
     $limit=(Get-Date).AddSeconds(60)
     while(!(PortOpen $Cfg.MySqlPort)){if((Get-Date) -gt $limit){throw 'MySQL 시작 대기 시간 초과: 오류 로그를 확인하세요.'};Start-Sleep -Milliseconds 500}
     if($fresh) {
@@ -92,6 +126,7 @@ try {
         [void](Sql 'SHUTDOWN;')
         $until=(Get-Date).AddSeconds(60)
         while((Owned 'mysqld.exe').Count){if((Get-Date) -gt $until){throw '초기 준비용 MySQL 종료가 지연됩니다. 로그를 확인하세요.'};Start-Sleep -Milliseconds 500}
+        $script:StartedTemporaryMysql=$false
         Write-Host '[준비 완료] 이제 이 창에서 MySQL을 실행합니다. 창을 열어 두세요.'
     } else {
         if(!(Owned 'mysqld.exe').Count -or !(PortOpen $Cfg.MySqlPort)){throw '먼저 1_MYSQL.bat을 실행하세요.'}
@@ -110,7 +145,17 @@ try {
     }
     exit 0
 } catch {
-    Write-Host ('[오류] '+$_.Exception.Message) -ForegroundColor Red
+    $preparationError=$_.Exception.Message
+    if($script:StartedTemporaryMysql -and (Owned 'mysqld.exe').Count){
+        $stopped=$false
+        try{[void](Sql 'SHUTDOWN;');$stopped=$true}catch{}
+        if(!$stopped -and (Test-Path "$Root/mysql/initial-client.cnf")){
+            try{[void](Sql 'SHUTDOWN;' -Initial);$stopped=$true}catch{}
+        }
+        if($stopped){Event 'Preparation failed; private temporary MySQL received graceful shutdown'}
+        else{Write-Host '준비용 MySQL을 안전하게 종료하지 못했습니다. 이 리팩의 로그/프로세스를 확인하세요. 다른 서버는 종료하지 않습니다.' -ForegroundColor Yellow}
+    }
+    Write-Host ('[오류] '+$preparationError) -ForegroundColor Red
     Write-Host '기존 DB를 삭제하지 마세요. 종료 순서는 월드 → 로그인 → MySQL입니다.'
     exit 1
 }
