@@ -1,5 +1,5 @@
 {
-  "status": "DRAFT_SOURCE_REVIEW_NOT_DEPLOYED",
+  "status": "SOURCE_PATCH_NOT_DEPLOYED",
   "recorded_at_kst": "2026-10-09T11:35:14+09:00",
   "baseline_repository": "https://github.com/hilch1981-prog/WER-Repack",
   "baseline_head": "235d99f1f55fa742834dfa1fbd21a876cc5b9365",

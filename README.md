@@ -1,8 +1,13 @@
-# WER REPACK VER1.1.0
+# WER Repack — WOW Emulator Research
+
+**한국어** · [English](README.en.md)
 
 > **후속 소스 검토 — 2026-10-09:** [안전성 개선과 검증 기록](docs/updates/2026-10-09-safety-review.md).
-> 이 변경 브랜치는 검토용이며, 기존 **v1.1.0 실행 ZIP·소스 ZIP·태그를 교체하지 않습니다.**
+> 후속 소스 갱신은 기존 **v1.1.0 실행 ZIP·소스 ZIP·태그를 교체하지 않습니다.**
 > 전체 빌드·격리 DB·로그인 dry-run은 통과했지만 월드/게임/2,000봇 검증과 운영 반영은 별도입니다.
+
+> **소스 사전 릴리즈:** [v1.1.1-rc.1](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.1) · [한국어 / English 릴리즈 설명](docs/releases/v1.1.1-rc.1.md).
+> 신규 실행 리팩이 아닙니다. 실행 서버를 받으려면 아래의 기존 **v1.1.0**을 선택하세요.
 
 > [!WARNING]
 > **🟨 WER 핵심 기능 — NVIDIA LLM 봇 대화를 꼭 사용해 보세요!**
@@ -29,7 +34,8 @@ AzerothCore, Playerbots, WOW Legends 기반 소스와 여러 커뮤니티 모듈
 ## 다운로드와 필수 안내
 
 - **게임 서버 실행용:** [v1.1.0 Releases](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)의 **`WER_REPACK_VER.1.1.0.zip` 하나**를 받아 해제하세요. 선택용 분할 파일 `.zip.001`/`.002`도 같은 내용입니다. GitHub의 자동 생성 **Source code ZIP은 실행용 리팩이 아닙니다.**
-- **소스:** 이 저장소의 [source/WER_Source](source/WER_Source) 또는 Releases의 `WER_Source.zip`. 소스는 배포 실행파일에 대응하는 통합 스냅샷입니다.
+- **1.1.0 실행파일 대응 소스:** [v1.1.0 태그의 소스](https://github.com/hilch1981-prog/WER-Repack/tree/v1.1.0/source/WER_Source) 또는 해당 릴리즈의 `WER_Source.zip`.
+- **후속 개선 소스:** 현재 [source/WER_Source](source/WER_Source). 2026-10-09의 19파일 변경을 포함하므로 **기존 1.1.0 실행 ZIP과 동일한 소스가 아닙니다.** [소스/빌드/검증 범위](source/README.md)를 확인하세요.
 - **설치/접속/종료:** [설치 및 실행 가이드](docs/INSTALL.md).
 - **LLM 봇 대화를 사용하려면 NVIDIA API 키 발급·입력이 필수입니다:** [NVIDIA API 설정 가이드](docs/NVIDIA_API.md). API 키는 배포하지 않습니다. 키 없이도 기본 서버·일반 봇 기능은 실행할 수 있지만 외부 LLM 대화는 사용할 수 없습니다.
 - **처음 설치용입니다.** 기존 서버 폴더나 `mysql/data`에 덮어쓰지 마세요. 운영 데이터 이관은 별도 작업입니다.

@@ -1,6 +1,8 @@
 # WER 1.1.0 대응 소스 및 빌드
 
-**v1.1.0 태그**의 `WER_Source/`는 배포 실행파일에 대응하는 전체 통합 소스 스냅샷입니다. 이 후속 검토 브랜치에는 2026-10-09 안전성 개선이 포함되며 **기존 릴리즈 실행파일·소스 ZIP과 동일하지 않습니다.** 저장소 첫 등록 커밋은 원본 개발 이력을 대신하지 않습니다. WER는 **WOW Emulator Research(와우 에뮬레이터 연구소)**의 약자입니다. 원 AUTHORS/LICENSE와 모듈별 저작권은 보존했습니다.
+[한국어](README.md) · [English](README.en.md)
+
+**v1.1.0 태그**의 `WER_Source/`는 배포 실행파일에 대응하는 전체 통합 소스 스냅샷입니다. 후속 소스에는 2026-10-09 안전성 개선이 포함되며 **기존 릴리즈 실행파일·소스 ZIP과 동일하지 않습니다.** 저장소 첫 등록 커밋은 원본 개발 이력을 대신하지 않습니다. WER는 **WOW Emulator Research(와우 에뮬레이터 연구소)**의 약자입니다. 원 AUTHORS/LICENSE와 모듈별 저작권은 보존했습니다.
 
 - 코어 조립 기준: `06234df3d5ab26c93f4f1f06f3edb828b73ecd3c` + 기존 Legends/WER 로컬 수정.
 - `SOURCE_MANIFEST.json`: WER_Source의 파일별 SHA256. upstream SHA 하나만으로 이 스냅샷을 재현할 수 없습니다.

@@ -1,5 +1,7 @@
 # WER 후속 안전성 개선 — 검토용 소스
 
+[한국어](2026-10-09-safety-review.md) · [English](2026-10-09-safety-review.en.md)
+
 기록일: **2026-10-09 KST**. 출처 재확인: **11:30 KST**.
 기준 WER 커밋: `235d99f1f55fa742834dfa1fbd21a876cc5b9365`.
 

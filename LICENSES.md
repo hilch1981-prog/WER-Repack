@@ -13,4 +13,23 @@
 
 와우 에뮬레이터 연구소(WOW Emulator Research, WER)의 표기는 리팩 통합·한국어 보완·배포 구성의 제작자를 뜻하며 원 코어 및 모듈의 저작자를 대신하지 않습니다. 첫 커밋은 기존 소스의 배포 스냅샷을 등록한 것이며 모든 소스를 이 저장소 작성자가 새로 작성했다는 뜻이 아닙니다.
 
-배포 바이너리에 대응하는 전체 소스를 저장소 및 릴리즈 `WER_Source.zip`으로 함께 제공합니다. 각 구성요소의 수정 및 배포 의무를 별도로 확인하세요. 일반 라이선스 설명은 [GNU FAQ](https://www.gnu.org/licenses/gpl-faq.html#NoMilitary)를 참고할 수 있습니다.
+기존 v1.1.0 바이너리 대응 소스는 [v1.1.0 태그](https://github.com/hilch1981-prog/WER-Repack/tree/v1.1.0/source/WER_Source) 및 해당 릴리즈 `WER_Source.zip`입니다. 후속 소스 사전 릴리즈는 별도의 버전이며 기존 EXE와 동일한 소스로 표시하지 않습니다. 각 구성요소의 수정 및 배포 의무를 별도로 확인하세요. 일반 라이선스 설명은 [GNU FAQ](https://www.gnu.org/licenses/gpl-faq.html#NoMilitary)를 참고할 수 있습니다.
+
+## English — licensing and attribution
+
+WER encourages non-commercial research and learning, and discourages paid resale or operation.
+This is a recommendation, **not an additional restriction** on rights granted by the original GPL/AGPL or other component licenses.
+There is no single non-commercial-only license for the entire repack. Each component's LICENSE/COPYING/AUTHORS and source headers take precedence.
+
+- AzerothCore: [original GPL notice](source/WER_Source/LICENSE), AUTHORS and file-specific notices.
+- Playerbots and community modules: [individual module sources/licenses](source/WER_Source/modules).
+- WOW Legends-based components: [AGPL notice](source/WER_Source/modules/mod-wowlegends/LICENSE); review original obligations, including those applicable to modified network services.
+- Standalone Ollama remains as reference source but is excluded from the repack build; its original license is retained.
+- MySQL, OpenSSL and Microsoft runtimes have their own terms; see [third-party notices](licenses/THIRD_PARTY.md).
+- World of Warcraft trademarks, client and game-data rights remain with their respective owners. WER is not an official Blizzard product or affiliated service; the game client is not supplied.
+
+WOW Emulator Research credits the integration/localization/packaging work, not authorship of all original code.
+The initial repository commit is a distribution snapshot, not the upstream development history.
+Source matching existing v1.1.0 binaries is pinned to the **v1.1.0 tag** and its `WER_Source.zip` asset;
+the newer source prerelease does not replace or match those older executables.
+Original authors, license files and applicable source-distribution obligations are preserved.
