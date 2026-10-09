@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'fix/wer-safety-review-*'
   pull_request:
 
 permissions:
