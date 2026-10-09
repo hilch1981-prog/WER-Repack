@@ -42821,8 +42821,8 @@
   },
   {
     "path": "modules/mod-ah-bot/src/AuctionHouseBotConfig.cpp",
-    "sha256": "255f1ae70c38cf18581ee1fe4bd28fa75f25988410ec8a4d35b16574c37419fb",
-    "size": 100434
+    "sha256": "f954d146b79c45fd8db7c7da71fba5cd6f52e9d36fab4bfee687f434fcc32b22",
+    "size": 101434
   },
   {
     "path": "modules/mod-ah-bot/src/AuctionHouseBotConfig.h",
@@ -43011,8 +43011,8 @@
   },
   {
     "path": "modules/mod-aoe-loot/src/aoe_loot.cpp",
-    "sha256": "4f944dae6557dbb5a750629e694e5a29629acdf014684c7e02db213028bab449",
-    "size": 24054
+    "sha256": "33b5b931958e13d0e0530d73a2335e58e49e215774b6747ee214637ce08e1699",
+    "size": 21623
   },
   {
     "path": "modules/mod-aoe-loot/src/aoe_loot.h",
@@ -43116,8 +43116,8 @@
   },
   {
     "path": "modules/mod-dungeon-clear/src/Ai/Dungeon/DungeonClear/Action/DcFollowerActions.cpp",
-    "sha256": "413794b279a79d582637ecd15469ecd9b596e8179b1d2f32bb8ef788356db402",
-    "size": 127535
+    "sha256": "777c177cc83bcda5eb85716b59a982df66daba63852222de286edf4ee570ec53",
+    "size": 126928
   },
   {
     "path": "modules/mod-dungeon-clear/src/Ai/Dungeon/DungeonClear/Action/DcHakkar.cpp",
@@ -43926,8 +43926,8 @@
   },
   {
     "path": "modules/mod-dungeon-clear/src/Ai/Dungeon/DungeonClear/Util/DcLeaderSignal.cpp",
-    "sha256": "e89393a6b0ef1170ab31e0b73f6ef2b2b58214ca81efa58516f9bfd48f8b1b03",
-    "size": 69638
+    "sha256": "2a98bec7afd911c9e49a96edee5338caa06c382fad2c66ac55351bebb48439c0",
+    "size": 69114
   },
   {
     "path": "modules/mod-dungeon-clear/src/Ai/Dungeon/DungeonClear/Util/DcLeaderSignal.h",
@@ -45821,13 +45821,13 @@
   },
   {
     "path": "modules/mod-guildhouse/src/mod_guildhouse.cpp",
-    "sha256": "929261a97b9c6df83401cb62a43ac0051418f16163ee02ee2694520438373ac7",
-    "size": 34265
+    "sha256": "9180f64114ab8868fef1de883390d56802e30247245b0f19b3544ca8480f4133",
+    "size": 34161
   },
   {
     "path": "modules/mod-guildhouse/src/mod_guildhouse_butler.cpp",
-    "sha256": "32066f648f7dbe273f926f06f23f4cdb09964bc9199eebcf78c72b6e6d5f46bc",
-    "size": 29209
+    "sha256": "7cf64218de318a8a221a420a58fda18e2e5a05976e102a15cac2f1ba23fb1781",
+    "size": 29105
   },
   {
     "path": "modules/mod-individual-xp/.editorconfig",
@@ -47061,8 +47061,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/BankAction.cpp",
-    "sha256": "5072fee50081c04bd0d9c29f81823c9f1f2169453deebb20697f52bf7221b828",
-    "size": 5292
+    "sha256": "f0e6576b42e5c5601bb02f42d12c3db2e412ef937a1c18bd573c2fc77b2b4e81",
+    "size": 5251
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/BankAction.h",
@@ -47291,13 +47291,13 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/DestroyItemAction.cpp",
-    "sha256": "99ccc937b3fb81627f8dad52c43e0a2942dedf022ab157250d6553be13a78828",
-    "size": 4057
+    "sha256": "939183f266ab72378244671c0a12c6f9938c3adb8c9fcd80bbbdcef936aca4b7",
+    "size": 3330
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/DestroyItemAction.h",
-    "sha256": "834a111712eec5586b1e4defed1d7c8fbcf0df09833ba043057dda21ae939cd8",
-    "size": 1104
+    "sha256": "5193e407e76e8fe56c092d9892b1f307cf5706232eb94987ccb508c6ef41a290",
+    "size": 921
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/DropQuestAction.cpp",
@@ -47321,8 +47321,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/EquipAction.cpp",
-    "sha256": "e0c2249a4eb411d1826399ad4ce1c726b055c7bfdd338285ebe0161555cd78c1",
-    "size": 17210
+    "sha256": "2edb66c2a1748750e4cee6b5fde87e648c1cb46a3d7b4cb613f69e8b6f714767",
+    "size": 17027
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/EquipAction.h",
@@ -47371,8 +47371,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/GenericSpellActions.cpp",
-    "sha256": "728b170c99a8f1e183d8267f84724d2627a02fc3f11836c1bcbcbc6e1bc39ac3",
-    "size": 22920
+    "sha256": "6224c45d248946f02a883bd8961de4b611bdc9a6a4f8f5cc237509f6bf994d32",
+    "size": 22815
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/GenericSpellActions.h",
@@ -47381,8 +47381,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/GiveItemAction.cpp",
-    "sha256": "045a20bcd39190af40df7efde378cdf195823c2f5df906e84b00840264c44f8b",
-    "size": 2906
+    "sha256": "2adc83d51280aa8d9496895badd7045a004945f48c409566cd2132d3e26f3cb7",
+    "size": 2905
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/GiveItemAction.h",
@@ -47651,8 +47651,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/OpenItemAction.cpp",
-    "sha256": "a9dfc19c4401b3bc454a5ae2e35f346489d0d2d2c18583ec9fdc44638ce72a73",
-    "size": 1432
+    "sha256": "a8924607083aaaacd2a334dda2635a48e710e26eb49a7c0905a13920d1aaa4d1",
+    "size": 1389
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/OpenItemAction.h",
@@ -48241,8 +48241,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/UnequipAction.cpp",
-    "sha256": "8bd6f56dd86ab97df240fb2e901a9ab5fff4628722dfefaa3a3c3250c695efb5",
-    "size": 2536
+    "sha256": "627c70652183b36a6ed7ecaed3539dec80e7acd3b135f454078f5c1f38d7e04a",
+    "size": 2535
   },
   {
     "path": "modules/mod-playerbots/src/Ai/Base/Actions/UnequipAction.h",
@@ -53246,8 +53246,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Ai/World/Rpg/Action/NewRpgBaseAction.cpp",
-    "sha256": "4e6714505e7586b94e1ccc75e1ff149f248b1719cc5f6409d64e02704b917638",
-    "size": 46848
+    "sha256": "ed8fc9a286015450f08fca6588728ecf0c9dc4ba73b86d0646af68427c096a1e",
+    "size": 46800
   },
   {
     "path": "modules/mod-playerbots/src/Ai/World/Rpg/Action/NewRpgBaseAction.h",
@@ -53571,13 +53571,13 @@
   },
   {
     "path": "modules/mod-playerbots/src/Bot/PlayerbotAI.cpp",
-    "sha256": "b2ef9fbdede573613d3f2669fddf39c394b3aa78a84d8db5ac07cd5c0c1a40bf",
-    "size": 228396
+    "sha256": "be00101e8462838a376ff8f15e4c6291da93979efdd01fb78f21e7fc6ee268a0",
+    "size": 227637
   },
   {
     "path": "modules/mod-playerbots/src/Bot/PlayerbotAI.h",
-    "sha256": "e571120b1f0f16c546a3226342d811941c6d06502171f0044219c8c1195168e2",
-    "size": 23770
+    "sha256": "b55f43a853f0c0ce03723e839cb8ae8966972c933ead578a6fc13e6b59729cf0",
+    "size": 23444
   },
   {
     "path": "modules/mod-playerbots/src/Bot/PlayerbotMgr.cpp",
@@ -53676,8 +53676,8 @@
   },
   {
     "path": "modules/mod-playerbots/src/Mgr/Item/ItemVisitors.h",
-    "sha256": "c62783b5424da4177692531ee5e08d2740a3d83aa84c76583cf20de9c3296df7",
-    "size": 13546
+    "sha256": "c2dadc5f2328d9edfd6b0978a911b7cdda86d191bb135f511ced08be0861fcc0",
+    "size": 13268
   },
   {
     "path": "modules/mod-playerbots/src/Mgr/Item/LootObjectStack.cpp",
@@ -57446,8 +57446,8 @@
   },
   {
     "path": "src/server/game/Entities/Unit/Unit.cpp",
-    "sha256": "de46636e9f903141916d08f9167b0aa5e2c4c1d13a7e136d006a436474fec40b",
-    "size": 634886
+    "sha256": "31d7a6f30ab1745564bfed08b0f62ceb22dede99e1d46a2b93cd31375a118315",
+    "size": 634778
   },
   {
     "path": "src/server/game/Entities/Unit/Unit.h",

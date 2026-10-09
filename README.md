@@ -1,5 +1,9 @@
 # WER REPACK VER1.1.0
 
+> **후속 소스 검토 — 2026-10-09:** [안전성 개선과 검증 기록](docs/updates/2026-10-09-safety-review.md).
+> 이 변경 브랜치는 검토용이며, 기존 **v1.1.0 실행 ZIP·소스 ZIP·태그를 교체하지 않습니다.**
+> 전체 빌드·격리 DB·로그인 dry-run은 통과했지만 월드/게임/2,000봇 검증과 운영 반영은 별도입니다.
+
 > [!WARNING]
 > **🟨 WER 핵심 기능 — NVIDIA LLM 봇 대화를 꼭 사용해 보세요!**
 >
@@ -125,6 +129,6 @@ GM 메뉴·아이템/주문 검색·순간이동·퀘스트 보조 등을 제공
 
 ## 소스와 출처
 
-기반 코어 SHA는 `06234df3d5ab26c93f4f1f06f3edb828b73ecd3c`이며 로컬 통합 수정이 더해져 있습니다. 해당 SHA만 받으면 동일한 리팩이 되는 것이 아닙니다. [대응 소스 및 빌드 안내](source/README.md), 파일별 `SOURCE_MANIFEST.json`, WER 1.1.0 패치를 함께 제공합니다. 이번 GitHub 게시를 위해 게임 코드를 재컴파일하거나 운영 DB를 변경하지 않았습니다.
+기반 코어 SHA는 `06234df3d5ab26c93f4f1f06f3edb828b73ecd3c`이며 로컬 통합 수정이 더해져 있습니다. 해당 SHA만 받으면 동일한 리팩이 되는 것이 아닙니다. [대응 소스 및 빌드 안내](source/README.md), 파일별 `SOURCE_MANIFEST.json`, WER 1.1.0 패치를 함께 제공합니다. 초기 v1.1.0 GitHub 게시에서는 재컴파일·운영 DB 변경을 하지 않았습니다. 후속 검토본의 별도 빌드와 미완료 검증은 상단의 2026-10-09 기록을 따릅니다.
 
 원 저작권·GPL/AGPL 등 라이선스는 각 구성요소에 보존합니다. [AzerothCore](https://github.com/azerothcore/azerothcore-wotlk), [Playerbots](https://github.com/mod-playerbots/mod-playerbots), [WOW Legends](https://github.com/WOWLegendsHQ/wow-legends-community)와 각 모듈 기여자에게 감사드립니다. 위 링크는 프로젝트 소개이며 정확한 파일 출처와 버전은 동봉 소스·매니페스트·각 모듈 고지를 우선합니다.

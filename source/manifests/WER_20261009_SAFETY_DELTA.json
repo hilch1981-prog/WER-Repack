@@ -1,0 +1,177 @@
+{
+  "status": "DRAFT_SOURCE_REVIEW_NOT_DEPLOYED",
+  "recorded_at_kst": "2026-10-09T11:35:14+09:00",
+  "baseline_repository": "https://github.com/hilch1981-prog/WER-Repack",
+  "baseline_head": "235d99f1f55fa742834dfa1fbd21a876cc5b9365",
+  "source_file_count": 19,
+  "cpp_count": 16,
+  "header_count": 3,
+  "build_input_patch_sha256": "bb7c3cb061016757d0f49584bd103c58797ebe97e2eb485499fb4ffa6ffdecd6",
+  "cpp_behavior_matches_built_inputs": true,
+  "publication_comment_only_files": 1,
+  "full_build": "AUTH_WORLD_X64_RELEASE_LINK_PASS",
+  "full_build_time_kst": "2026-10-09T00:32:40+09:00",
+  "isolated_mysql": "UTF8_ICU_TLS_ENCRYPTION_AND_GRACEFUL_STOP_PASS",
+  "isolated_schema_import": "FOUR_CLEAN_RELEASE_DUMPS_538_TABLES_PASS",
+  "auth_dry_run": "DB_POOL_REALM_LOADING_EXIT_ZERO_PASS",
+  "world_game_load_verification": "NOT_RUN",
+  "production_changed": false,
+  "release_assets_changed": false,
+  "active_configuration_changed": false,
+  "dependency_security_upgrade_applied": false,
+  "paid_api_calls": 0,
+  "files": [
+    {
+      "path": "modules/mod-ah-bot/src/AuctionHouseBotConfig.cpp",
+      "before_sha256": "f954d146b79c45fd8db7c7da71fba5cd6f52e9d36fab4bfee687f434fcc32b22",
+      "build_input_sha256": "255f1ae70c38cf18581ee1fe4bd28fa75f25988410ec8a4d35b16574c37419fb",
+      "published_sha256": "255f1ae70c38cf18581ee1fe4bd28fa75f25988410ec8a4d35b16574c37419fb",
+      "size": 100434,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-aoe-loot/src/aoe_loot.cpp",
+      "before_sha256": "33b5b931958e13d0e0530d73a2335e58e49e215774b6747ee214637ce08e1699",
+      "build_input_sha256": "4f944dae6557dbb5a750629e694e5a29629acdf014684c7e02db213028bab449",
+      "published_sha256": "4f944dae6557dbb5a750629e694e5a29629acdf014684c7e02db213028bab449",
+      "size": 24054,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-dungeon-clear/src/Ai/Dungeon/DungeonClear/Action/DcFollowerActions.cpp",
+      "before_sha256": "777c177cc83bcda5eb85716b59a982df66daba63852222de286edf4ee570ec53",
+      "build_input_sha256": "413794b279a79d582637ecd15469ecd9b596e8179b1d2f32bb8ef788356db402",
+      "published_sha256": "413794b279a79d582637ecd15469ecd9b596e8179b1d2f32bb8ef788356db402",
+      "size": 127535,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-dungeon-clear/src/Ai/Dungeon/DungeonClear/Util/DcLeaderSignal.cpp",
+      "before_sha256": "2a98bec7afd911c9e49a96edee5338caa06c382fad2c66ac55351bebb48439c0",
+      "build_input_sha256": "e89393a6b0ef1170ab31e0b73f6ef2b2b58214ca81efa58516f9bfd48f8b1b03",
+      "published_sha256": "e89393a6b0ef1170ab31e0b73f6ef2b2b58214ca81efa58516f9bfd48f8b1b03",
+      "size": 69638,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-guildhouse/src/mod_guildhouse.cpp",
+      "before_sha256": "9180f64114ab8868fef1de883390d56802e30247245b0f19b3544ca8480f4133",
+      "build_input_sha256": "929261a97b9c6df83401cb62a43ac0051418f16163ee02ee2694520438373ac7",
+      "published_sha256": "929261a97b9c6df83401cb62a43ac0051418f16163ee02ee2694520438373ac7",
+      "size": 34265,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-guildhouse/src/mod_guildhouse_butler.cpp",
+      "before_sha256": "7cf64218de318a8a221a420a58fda18e2e5a05976e102a15cac2f1ba23fb1781",
+      "build_input_sha256": "32066f648f7dbe273f926f06f23f4cdb09964bc9199eebcf78c72b6e6d5f46bc",
+      "published_sha256": "32066f648f7dbe273f926f06f23f4cdb09964bc9199eebcf78c72b6e6d5f46bc",
+      "size": 29209,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/BankAction.cpp",
+      "before_sha256": "f0e6576b42e5c5601bb02f42d12c3db2e412ef937a1c18bd573c2fc77b2b4e81",
+      "build_input_sha256": "5072fee50081c04bd0d9c29f81823c9f1f2169453deebb20697f52bf7221b828",
+      "published_sha256": "5072fee50081c04bd0d9c29f81823c9f1f2169453deebb20697f52bf7221b828",
+      "size": 5292,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/DestroyItemAction.cpp",
+      "before_sha256": "939183f266ab72378244671c0a12c6f9938c3adb8c9fcd80bbbdcef936aca4b7",
+      "build_input_sha256": "99ccc937b3fb81627f8dad52c43e0a2942dedf022ab157250d6553be13a78828",
+      "published_sha256": "99ccc937b3fb81627f8dad52c43e0a2942dedf022ab157250d6553be13a78828",
+      "size": 4057,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/DestroyItemAction.h",
+      "before_sha256": "5193e407e76e8fe56c092d9892b1f307cf5706232eb94987ccb508c6ef41a290",
+      "build_input_sha256": "834a111712eec5586b1e4defed1d7c8fbcf0df09833ba043057dda21ae939cd8",
+      "published_sha256": "834a111712eec5586b1e4defed1d7c8fbcf0df09833ba043057dda21ae939cd8",
+      "size": 1104,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/EquipAction.cpp",
+      "before_sha256": "2edb66c2a1748750e4cee6b5fde87e648c1cb46a3d7b4cb613f69e8b6f714767",
+      "build_input_sha256": "04bd386f8505b854dd8ed0bad9e8788d415e087a3646bca10256652ec422f980",
+      "published_sha256": "e0c2249a4eb411d1826399ad4ce1c726b055c7bfdd338285ebe0161555cd78c1",
+      "size": 17210,
+      "publication_comment_only": true
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/GenericSpellActions.cpp",
+      "before_sha256": "6224c45d248946f02a883bd8961de4b611bdc9a6a4f8f5cc237509f6bf994d32",
+      "build_input_sha256": "728b170c99a8f1e183d8267f84724d2627a02fc3f11836c1bcbcbc6e1bc39ac3",
+      "published_sha256": "728b170c99a8f1e183d8267f84724d2627a02fc3f11836c1bcbcbc6e1bc39ac3",
+      "size": 22920,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/GiveItemAction.cpp",
+      "before_sha256": "2adc83d51280aa8d9496895badd7045a004945f48c409566cd2132d3e26f3cb7",
+      "build_input_sha256": "045a20bcd39190af40df7efde378cdf195823c2f5df906e84b00840264c44f8b",
+      "published_sha256": "045a20bcd39190af40df7efde378cdf195823c2f5df906e84b00840264c44f8b",
+      "size": 2906,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/OpenItemAction.cpp",
+      "before_sha256": "a8924607083aaaacd2a334dda2635a48e710e26eb49a7c0905a13920d1aaa4d1",
+      "build_input_sha256": "a9dfc19c4401b3bc454a5ae2e35f346489d0d2d2c18583ec9fdc44638ce72a73",
+      "published_sha256": "a9dfc19c4401b3bc454a5ae2e35f346489d0d2d2c18583ec9fdc44638ce72a73",
+      "size": 1432,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/Base/Actions/UnequipAction.cpp",
+      "before_sha256": "627c70652183b36a6ed7ecaed3539dec80e7acd3b135f454078f5c1f38d7e04a",
+      "build_input_sha256": "8bd6f56dd86ab97df240fb2e901a9ab5fff4628722dfefaa3a3c3250c695efb5",
+      "published_sha256": "8bd6f56dd86ab97df240fb2e901a9ab5fff4628722dfefaa3a3c3250c695efb5",
+      "size": 2536,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Ai/World/Rpg/Action/NewRpgBaseAction.cpp",
+      "before_sha256": "ed8fc9a286015450f08fca6588728ecf0c9dc4ba73b86d0646af68427c096a1e",
+      "build_input_sha256": "4e6714505e7586b94e1ccc75e1ff149f248b1719cc5f6409d64e02704b917638",
+      "published_sha256": "4e6714505e7586b94e1ccc75e1ff149f248b1719cc5f6409d64e02704b917638",
+      "size": 46848,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Bot/PlayerbotAI.cpp",
+      "before_sha256": "be00101e8462838a376ff8f15e4c6291da93979efdd01fb78f21e7fc6ee268a0",
+      "build_input_sha256": "b2ef9fbdede573613d3f2669fddf39c394b3aa78a84d8db5ac07cd5c0c1a40bf",
+      "published_sha256": "b2ef9fbdede573613d3f2669fddf39c394b3aa78a84d8db5ac07cd5c0c1a40bf",
+      "size": 228396,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Bot/PlayerbotAI.h",
+      "before_sha256": "b55f43a853f0c0ce03723e839cb8ae8966972c933ead578a6fc13e6b59729cf0",
+      "build_input_sha256": "e571120b1f0f16c546a3226342d811941c6d06502171f0044219c8c1195168e2",
+      "published_sha256": "e571120b1f0f16c546a3226342d811941c6d06502171f0044219c8c1195168e2",
+      "size": 23770,
+      "publication_comment_only": false
+    },
+    {
+      "path": "modules/mod-playerbots/src/Mgr/Item/ItemVisitors.h",
+      "before_sha256": "c2dadc5f2328d9edfd6b0978a911b7cdda86d191bb135f511ced08be0861fcc0",
+      "build_input_sha256": "c62783b5424da4177692531ee5e08d2740a3d83aa84c76583cf20de9c3296df7",
+      "published_sha256": "c62783b5424da4177692531ee5e08d2740a3d83aa84c76583cf20de9c3296df7",
+      "size": 13546,
+      "publication_comment_only": false
+    },
+    {
+      "path": "src/server/game/Entities/Unit/Unit.cpp",
+      "before_sha256": "31d7a6f30ab1745564bfed08b0f62ceb22dede99e1d46a2b93cd31375a118315",
+      "build_input_sha256": "de46636e9f903141916d08f9167b0aa5e2c4c1d13a7e136d006a436474fec40b",
+      "published_sha256": "de46636e9f903141916d08f9167b0aa5e2c4c1d13a7e136d006a436474fec40b",
+      "size": 634886,
+      "publication_comment_only": false
+    }
+  ]
+}
