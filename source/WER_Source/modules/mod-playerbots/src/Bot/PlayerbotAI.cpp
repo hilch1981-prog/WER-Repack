@@ -459,7 +459,7 @@ void PlayerbotAI::UpdateAIGroupMaster()
     if (!master || (masterBotAI && !IsSelfBot(master)))
     {
         Player* newMaster = FindNewMaster();
-        if (newMaster)
+        if (newMaster && newMaster != botAI->GetMaster())
         {
             master = newMaster;
             botAI->SetMaster(newMaster);
@@ -600,8 +600,9 @@ void PlayerbotAI::HandleCommands()
             continue;
         }
 
-        Player* owner = it->GetOwner();
-        if (!owner)
+        // A delayed command must not retain a player pointer or stale permission.
+        Player* owner = ObjectAccessor::FindPlayer(it->GetOwnerGuid());
+        if (!owner || !GetSecurity()->CheckLevelFor(it->GetRequiredLevel(), true, owner))
         {
             it = chatCommands.erase(it);
             continue;
@@ -707,15 +708,19 @@ void PlayerbotAI::HandleCommand(uint32 type, const std::string& text, Player& fr
         return;
     }
 
-    if (!IsAllowedCommand(filtered) &&
+    bool const allowedCommand = IsAllowedCommand(filtered);
+    if (!allowedCommand &&
         !GetSecurity()->CheckLevelFor(PlayerbotSecurityLevel::PLAYERBOT_SECURITY_ALLOW_ALL, type != CHAT_MSG_WHISPER,
-                                      &fromPlayer))
+                                     &fromPlayer))
         return;
+
+    PlayerbotSecurityLevel const requiredLevel =
+        allowedCommand ? PLAYERBOT_SECURITY_DENY_ALL : PLAYERBOT_SECURITY_ALLOW_ALL;
 
     if (type == CHAT_MSG_RAID_WARNING && filtered.find(bot->GetName()) != std::string::npos &&
         filtered.find("award") == std::string::npos)
     {
-        chatCommands.push_back(ChatCommandHolder("warning", &fromPlayer, type));
+        chatCommands.push_back(ChatCommandHolder("warning", fromPlayer.GetGUID(), requiredLevel, type));
         return;
     }
 
@@ -753,7 +758,8 @@ void PlayerbotAI::HandleCommand(uint32 type, const std::string& text, Player& fr
             }
         }
 
-        chatCommands.push_back(ChatCommandHolder(remaining, &fromPlayer, type, time(0) + index));
+        chatCommands.push_back(
+            ChatCommandHolder(remaining, fromPlayer.GetGUID(), requiredLevel, type, time(0) + index));
     }
     else if (filtered == "reset")
     {
@@ -803,7 +809,7 @@ void PlayerbotAI::HandleCommand(uint32 type, const std::string& text, Player& fr
 
     else
     {
-        chatCommands.push_back(ChatCommandHolder(filtered, &fromPlayer, type));
+        chatCommands.push_back(ChatCommandHolder(filtered, fromPlayer.GetGUID(), requiredLevel, type));
     }
 }
 
@@ -1053,14 +1059,18 @@ void PlayerbotAI::HandleCommandInternal(uint32 type, std::string const text, Pla
         fromPlayer->SendDirectMessage(&data);
         return;
     }
-    if (!IsAllowedCommand(filtered) &&
+    bool const allowedCommand = IsAllowedCommand(filtered);
+    if (!allowedCommand &&
         (!GetSecurity()->CheckLevelFor(PLAYERBOT_SECURITY_ALLOW_ALL, type != CHAT_MSG_WHISPER, fromPlayer)))
         return;
+
+    PlayerbotSecurityLevel const requiredLevel =
+        allowedCommand ? PLAYERBOT_SECURITY_INVITE : PLAYERBOT_SECURITY_ALLOW_ALL;
 
     if (type == CHAT_MSG_RAID_WARNING && filtered.find(bot->GetName()) != std::string::npos &&
         filtered.find("award") == std::string::npos)
     {
-        chatCommands.push_back(ChatCommandHolder("warning", fromPlayer, type));
+        chatCommands.push_back(ChatCommandHolder("warning", fromPlayer->GetGUID(), requiredLevel, type));
         return;
     }
 
@@ -1089,7 +1099,8 @@ void PlayerbotAI::HandleCommandInternal(uint32 type, std::string const text, Pla
             }
         }
 
-        chatCommands.push_back(ChatCommandHolder(remaining, fromPlayer, type, time(nullptr) + index));
+        chatCommands.push_back(
+            ChatCommandHolder(remaining, fromPlayer->GetGUID(), requiredLevel, type, time(nullptr) + index));
     }
     else if (filtered == "reset")
     {
@@ -1152,7 +1163,7 @@ void PlayerbotAI::HandleCommandInternal(uint32 type, std::string const text, Pla
     }
     else
     {
-        chatCommands.push_back(ChatCommandHolder(filtered, fromPlayer, type));
+        chatCommands.push_back(ChatCommandHolder(filtered, fromPlayer->GetGUID(), requiredLevel, type));
     }
 }
 

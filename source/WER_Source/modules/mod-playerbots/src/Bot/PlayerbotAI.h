@@ -19,6 +19,7 @@
 #include "Item.h"
 #include "NewRpgInfo.h"
 #include "NewRpgStrategy.h"
+#include "ObjectGuid.h"
 #include "PlayerbotAIBase.h"
 #include "PlayerbotAIConfig.h"
 #include "PlayerbotSecurity.h"
@@ -35,7 +36,6 @@ class ExternalEventHelper;
 class Group;
 class Gameobject;
 class Item;
-class ObjectGuid;
 class Player;
 class PlayerbotMgr;
 class Spell;
@@ -369,24 +369,30 @@ private:
 class ChatCommandHolder
 {
 public:
-    ChatCommandHolder(std::string const command, Player* owner = nullptr, uint32 type = CHAT_MSG_WHISPER,
-                      time_t time = 0)
-        : command(command), owner(owner), type(type), time(time)
+    ChatCommandHolder(std::string const command, ObjectGuid owner, PlayerbotSecurityLevel requiredLevel,
+                      uint32 type = CHAT_MSG_WHISPER, time_t time = 0)
+        : command(command), owner(owner), requiredLevel(requiredLevel), type(type), time(time)
     {
     }
     ChatCommandHolder(ChatCommandHolder const& other)
-        : command(other.command), owner(other.owner), type(other.type), time(other.time)
+        : command(other.command),
+          owner(other.owner),
+          requiredLevel(other.requiredLevel),
+          type(other.type),
+          time(other.time)
     {
     }
 
     std::string const& GetCommand() { return command; }
-    Player* GetOwner() { return owner; }
+    ObjectGuid GetOwnerGuid() { return owner; }
+    PlayerbotSecurityLevel GetRequiredLevel() { return requiredLevel; }
     uint32& GetType() { return type; }
     time_t& GetTime() { return time; }
 
 private:
     std::string const command;
-    Player* owner;
+    ObjectGuid owner;
+    PlayerbotSecurityLevel requiredLevel;  // permission required when the command entered the queue
     uint32 type;
     time_t time;
 };
