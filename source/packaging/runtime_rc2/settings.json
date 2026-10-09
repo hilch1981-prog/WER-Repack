@@ -1,0 +1,9 @@
+{
+  "MySqlPort": 3306,
+  "AuthPort": 3724,
+  "WorldPort": 59823,
+  "DbPassword": "wer-local-only",
+  "RealmAddress": "auto",
+  "BindIP": "0.0.0.0",
+  "RestartDelay": 15
+}

@@ -15,10 +15,11 @@ The banner's expansion cards do not indicate support for expansions other than t
 > The existing **v1.1.0 Windows repack** was produced on **September 21, 2026**.
 > The **October 9, 2026 source update** is newer than its executables and source ZIP.
 > [Read the update and validation limits](docs/updates/2026-10-09-safety-review.en.md).
-> Source publication or a successful build does not establish world startup, gameplay, 2,000-bot load or production readiness.
+> Isolated world startup and 27 real protocol tests on the final executables have passed; graphical gameplay, sustained 2,000-bot load, live LLM and production readiness remain separate.
 
 > **Source prerelease:** [v1.1.1-rc.1](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.1) · [Korean / English release notes](docs/releases/v1.1.1-rc.1.md).
-> This is not a new runnable repack. Use **v1.1.0** below if you need the existing executable server package.
+> rc.1 remains source-only. **New runnable prerelease:** [v1.1.1-rc.2](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.2) · [release/validation notes](docs/releases/v1.1.1-rc.2.md) · [quick start](docs/INSTALL.rc2.md).
+> rc.2 excludes game data: [extract from your own lawful client](docs/DATA_EXTRACTION.md). Existing stable v1.1.0 is preserved.
 
 > [!WARNING]
 > **🟨 Try NVIDIA-powered LLM bot conversations — a key WER feature.**
@@ -29,6 +30,7 @@ The banner's expansion cards do not indicate support for expansions other than t
 
 ## Download the right package
 
+- **New updated executable package:** rc.2 `WER_REPACK_VER.1.1.1-rc.2.zip`. Matching full source is a separate `WER_Source_v1.1.1-rc.2.zip`; game data is not bundled. Fresh-install prerelease, not a sustained-load certification or an in-place update.
 - **Runnable server:** [v1.1.0 release](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0), asset **`WER_REPACK_VER.1.1.0.zip`**. Extract the complete ZIP into a new folder.
 - **Source matching v1.1.0 executables:** that release's `WER_Source.zip` or the [v1.1.0 source tag](https://github.com/hilch1981-prog/WER-Repack/tree/v1.1.0/source/WER_Source).
 - **Updated source:** [source/WER_Source](source/WER_Source). It includes the 19-file safety update; **it does not match the old executable ZIP byte-for-byte**.
@@ -121,7 +123,8 @@ No additional MPQ, DLL or SQL is required for this addon. Its separate validatio
 
 The original repack was checked for initial DB installation, reduced-bot startup, visible consoles, Korean output and graceful shutdown.
 The new source passed separate full auth/world linking, isolated DB tests and auth dry-run.
-**Full world initialization, real client login, sustained 2,000-bot load and live NVIDIA calls for this update remain unverified.**
+**World initialization and 27 real protocol tests on the final executables pass. Graphical client use, sustained 2,000-bot load and live NVIDIA calls remain unverified.**
+Separate population QA generated250 bot accounts/2500 bot characters with the unchanged2,000 target. Its last sample recorded429 online random bots (418 guilded/11 unguilded) before a2GiB commit protection floor stopped owned QA. Database/logs are preserved; this is not a2,000-online pass. A retry awaits at least16GiB initial headroom, not a capacity guarantee. See the [machine-readable verification](docs/releases/verification_rc2.json). Pet waypoint0 and some guild-join warnings remain open.
 Remaining issues include BWL movement/upper-floor pulls/tank threat, speech-to-action integration, residual English,
 Dalaran `M2Shared.cpp` memory failures, reconnect names shown as “Unknown,” and some startup content warnings.
 Previous user confirmation of guild-house menus/purchases/separation does not replace validation on a fresh PC.
