@@ -51,6 +51,16 @@ class RuntimeArchiveTests(unittest.TestCase):
     def test_source_is_rejected(self):
         self.assertEqual(self.run_fixture(lambda p: p.update({"source/main.cpp": b"source"})), 1)
 
+    def test_loose_source_and_client_data_are_rejected(self):
+        for name in ("Spell.dbc", "backup/tile.mmtile", "main.cpp", "backup/model.m2"):
+            with self.subTest(name=name):
+                self.assertEqual(self.run_fixture(lambda p: p.update({name: b"excluded"})), 1)
+
+    def test_unsafe_member_is_rejected(self):
+        for name in ("../escaped.txt", "nested/../../escaped.txt", "C:/escaped.txt", "nested\\escaped.txt"):
+            with self.subTest(name=name):
+                self.assertEqual(self.run_fixture(lambda p: p.update({name: b"unsafe"})), 1)
+
     def test_nonempty_api_key_is_rejected(self):
         self.assertEqual(self.run_fixture(lambda p: p.update({"configs/modules/mod_wowlegends.conf": b'WowLegends.AiChat.ApiKey = "fixture-only"\n'})), 1)
 

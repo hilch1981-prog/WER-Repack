@@ -33,8 +33,12 @@ def verify(archive_path):
             relative_files.add(relative)
             if re.match(r"(?:source|WER_Source|mysql/data|data/(?:dbc|maps|vmaps|mmaps|Cameras|pathways))(/|$)", relative, re.I):
                 errors.append("excluded data/source: " + relative)
-            if relative.lower().endswith((".mpq", ".wlp", ".pdb", ".log")):
-                errors.append("excluded binary/cache/log: " + relative)
+            if relative.lower().endswith((
+                ".cpp", ".h", ".cxx", ".mpq", ".dbc", ".map", ".vmap", ".vmtree",
+                ".vmtile", ".vmo", ".mmap", ".mmtile", ".wlp", ".wmo", ".m2",
+                ".adt", ".pdb", ".log",
+            )):
+                errors.append("excluded source/client-data/cache/log: " + relative)
         required = {
             "authserver.exe", "worldserver.exe", "map_extractor.exe", "vmap4_extractor.exe",
             "vmap4_assembler.exe", "mmaps_generator.exe", "mmaps-config.yaml",

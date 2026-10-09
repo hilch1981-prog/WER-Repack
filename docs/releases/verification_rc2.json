@@ -6,6 +6,7 @@
   "tests": {
     "source_manifest_files": 12736,
     "source_verifier_regressions": 7,
+    "runnable_archive_verifier_regressions": 8,
     "isolated_world_ready": true,
     "radmin_real_protocol_tests": 26,
     "protocol_suite_counts": {"smoke": 5, "items_equip": 5, "protocol_teleport": 5, "social_group": 6, "social_trade": 5},
