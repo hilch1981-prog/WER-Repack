@@ -55066,8 +55066,8 @@
   },
   {
     "path": "src/common/Banner.cpp",
-    "sha256": "23774cc14747ce26f5829306d527143621b7ef37d0a6170ac450f80d2a471f20",
-    "size": 1532
+    "sha256": "4d9695926ca1d4b52926a1bd70641d69379d52462c52a2f9bf74419c303fb44c",
+    "size": 1542
   },
   {
     "path": "src/common/Banner.h",

@@ -18,6 +18,8 @@ It does not build, connect to a DB or start a server. Preserve original AUTHORS,
 
 ## Build baseline
 
+The runnable **v1.1.1-rc.2** includes the 19-file safety update and revised Banner.cpp. [Release/validation notes](../docs/releases/v1.1.1-rc.2.md) distinguish its tests and remaining limits. The safety delta is historical; SOURCE_MANIFEST.json is the current complete source inventory. Source and game data are not bundled in the executable ZIP.
+
 Visual Studio 2022 C++ x64 / MSVC 14.44, Windows SDK, CMake, Boost 1.84.0, OpenSSL 4.x and MySQL 8.4.9 development files:
 
 ```powershell

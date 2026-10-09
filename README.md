@@ -4,10 +4,11 @@
 
 > **후속 소스 검토 — 2026-10-09:** [안전성 개선과 검증 기록](docs/updates/2026-10-09-safety-review.md).
 > 후속 소스 갱신은 기존 **v1.1.0 실행 ZIP·소스 ZIP·태그를 교체하지 않습니다.**
-> 전체 빌드·격리 DB·로그인 dry-run은 통과했지만 월드/게임/2,000봇 검증과 운영 반영은 별도입니다.
+> 전체 빌드·격리 DB·월드 초기화와 26개 프로토콜 시험은 통과했습니다. 2,000봇 부하·그래픽 게임·실 LLM·운영 반영은 별도입니다.
 
 > **소스 사전 릴리즈:** [v1.1.1-rc.1](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.1) · [한국어 / English 릴리즈 설명](docs/releases/v1.1.1-rc.1.md).
-> 신규 실행 리팩이 아닙니다. 실행 서버를 받으려면 아래의 기존 **v1.1.0**을 선택하세요.
+> rc.1은 소스 전용입니다. **새 실행 사전 릴리즈:** [v1.1.1-rc.2](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.2) · [변경·검증 범위](docs/releases/v1.1.1-rc.2.md) · [빠른 실행](docs/INSTALL.rc2.md).
+> rc.2에는 게임 데이터가 없으므로 [본인 클라이언트에서 추출](docs/DATA_EXTRACTION.md)해야 합니다. 기존 안정판 v1.1.0은 보존합니다.
 
 > [!WARNING]
 > **🟨 WER 핵심 기능 — NVIDIA LLM 봇 대화를 꼭 사용해 보세요!**
@@ -23,7 +24,7 @@
 *사용자가 제공한 연구소 소개 이미지입니다. 이미지의 확장팩 카드와 별개로 이 배포본의 대상은 리치왕 3.3.5a입니다.*
 
 **와우 리치왕 3.3.5a · 빌드 12340 · 한국어(koKR) · Windows x64**  
-**와우 에뮬레이터 연구소 — WOW Emulator Research (WER) / 제작일: 2026년 9월 21일**
+**와우 에뮬레이터 연구소 — WOW Emulator Research (WER) / 기존 v1.1.0: 2026-09-21, 실행 rc.2: 2026-10-09**
 
 **WER는 WOW Emulator Research의 약자이며, 리팩의 이름은 WER Repack입니다.**
 
@@ -33,6 +34,7 @@ AzerothCore, Playerbots, WOW Legends 기반 소스와 여러 커뮤니티 모듈
 
 ## 다운로드와 필수 안내
 
+- **새 개선 실행판:** [v1.1.1-rc.2](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.2)의 `WER_REPACK_VER.1.1.1-rc.2.zip`. 전체 소스는 별도 `WER_Source_v1.1.1-rc.2.zip`, 게임 데이터는 제외합니다. 신규 폴더 설치용이며 2,000봇 지속부하를 보증하지 않는 사전 릴리즈입니다.
 - **게임 서버 실행용:** [v1.1.0 Releases](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)의 **`WER_REPACK_VER.1.1.0.zip` 하나**를 받아 해제하세요. 선택용 분할 파일 `.zip.001`/`.002`도 같은 내용입니다. GitHub의 자동 생성 **Source code ZIP은 실행용 리팩이 아닙니다.**
 - **1.1.0 실행파일 대응 소스:** [v1.1.0 태그의 소스](https://github.com/hilch1981-prog/WER-Repack/tree/v1.1.0/source/WER_Source) 또는 해당 릴리즈의 `WER_Source.zip`.
 - **후속 개선 소스:** 현재 [source/WER_Source](source/WER_Source). 2026-10-09의 19파일 변경을 포함하므로 **기존 1.1.0 실행 ZIP과 동일한 소스가 아닙니다.** [소스/빌드/검증 범위](source/README.md)를 확인하세요.

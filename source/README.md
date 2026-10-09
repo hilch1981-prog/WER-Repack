@@ -16,6 +16,8 @@
 
 ## 빌드 환경
 
+실행 `v1.1.1-rc.2`는 19파일 안전성 수정과 갱신된 `Banner.cpp`를 포함합니다. [실행·검증 설명](../docs/releases/v1.1.1-rc.2.md)을 확인하세요. `WER_20261009_SAFETY_DELTA.json`은 이전 19파일 검토 기록이며 버전 배너 변경은 별도입니다. 현재 전체 원장은 `SOURCE_MANIFEST.json`입니다. 새 실행 ZIP에 전체 소스·게임 데이터를 넣지 않습니다.
+
 Visual Studio 2022 C++ x64 도구/MSVC 14.44, Windows SDK, CMake, Boost 1.84.0(msvc14.3), OpenSSL 4.x, MySQL 8.4.9 개발 헤더/라이브러리가 기준입니다. 정확한 소스는 현재 폴더를 사용합니다.
 
 ```powershell

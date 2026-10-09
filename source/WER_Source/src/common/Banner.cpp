@@ -21,11 +21,11 @@
 
 void Acore::Banner::Show(std::string_view applicationName, void(*log)(std::string_view text), void(*logExtraInfo)())
 {
-    log(Acore::StringFormat("WER REPACK VER1.1.0 ({}) - AzerothCore 기반", applicationName));
+    log(Acore::StringFormat("WER REPACK VER1.1.1-rc.2 ({}) - AzerothCore 기반", applicationName));
     log("============================================================");
     log("  와우 리치왕 버전 3.3.5a (빌드 12340)");
-    log("  한국 에뮬레이터 연구소 제작 - WER REPACK VER1.1.0");
-    log("  제작일: 2026년 9월 21일 (2026-09-21)");
+    log("  와우 에뮬레이터 연구소 제작 - WER REPACK VER1.1.1-rc.2");
+    log("  제작일: 2026년 10월 9일 (2026-10-09)");
     log("============================================================");
     log("  종료: Ctrl+C (월드 서버 -> 로그인 서버 -> MySQL 순서)\n");
 
