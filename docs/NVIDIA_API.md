@@ -1,5 +1,7 @@
 # NVIDIA API 키 발급 및 입력 — 외부 LLM 봇 대화 필수
 
+[한국어](NVIDIA_API.md) · [English](NVIDIA_API.en.md)
+
 > [!WARNING]
 > **🟨 WER 핵심 기능 — NVIDIA LLM 봇 대화를 꼭 사용해 보세요!**
 >

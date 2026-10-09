@@ -1,5 +1,9 @@
 # 설치 · 실행 · 접속
 
+[한국어](INSTALL.md) · [English](INSTALL.en.md)
+
+아래 실행 안내는 기존 **v1.1.0 Windows 실행 리팩**에 해당합니다. 후속 소스 사전 릴리즈/저장소 ZIP은 실행 리팩이 아니며 초기 DB·MySQL·게임 데이터·EXE를 포함한다고 가정하지 마세요.
+
 ## 1. 실행용 파일 받기 — ZIP 하나면 됩니다
 
 가장 간단한 방법은 [v1.1.0 릴리즈](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0)의 **`WER_REPACK_VER.1.1.0.zip` 하나를 받아 일반 ZIP처럼 압축 해제**하는 것입니다. `SHA256SUMS.txt`로 해시를 비교할 수 있습니다. 재압축으로 GitHub 파일 크기 제한 안에 들어왔습니다. 아래 분할 파일은 다운로드를 나누고 싶은 분을 위한 대안이며 단일 ZIP과 내용이 같습니다.

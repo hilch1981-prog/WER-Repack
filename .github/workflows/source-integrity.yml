@@ -1,0 +1,28 @@
+name: WER source integrity
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wer-source-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  source-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact source snapshot
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5, pinned
+        with:
+          persist-credentials: false
+      - name: Test read-only manifest verifier
+        run: python3 -B tools/tests/test_verify_source_manifest.py
+      - name: Verify complete published source manifest
+        run: python3 -B tools/verify-source-manifest.py
