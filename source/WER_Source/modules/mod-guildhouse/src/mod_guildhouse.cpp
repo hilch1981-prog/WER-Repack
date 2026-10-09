@@ -500,7 +500,9 @@ public:
         GameObject* object = sObjectMgr->IsGameObjectStaticTransport(objectInfo->entry) ? new StaticTransport() : new GameObject();
         ObjectGuid::LowType guidLow = player->GetMap()->GenerateLowGuid<HighGuid::GameObject>();
 
-        if (!object->Create(guidLow, objectInfo->entry, map, GetGuildPhase(player), posX, posY, posZ, ori, G3D::Quat(), 0, GO_STATE_READY))
+        G3D::Quat rotation = G3D::Quat::fromAxisAngleRotation(G3D::Vector3::unitZ(), ori);
+        if (!object->Create(guidLow, objectInfo->entry, map, GetGuildPhase(player),
+                posX, posY, posZ, ori, rotation, 0, GO_STATE_READY))
         {
             delete object;
             LOG_INFO("modules", "GUILDHOUSE: Unable to create object!!");
