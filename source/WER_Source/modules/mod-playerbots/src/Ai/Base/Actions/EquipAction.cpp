@@ -332,13 +332,15 @@ void EquipAction::EquipItem(Item* item)
 
 ItemIds EquipAction::SelectInventoryItemsToEquip()
 {
-    CollectItemsVisitor visitor;
+    // Defensively collect GUIDs before evaluating upgrades. No invalidation is demonstrated
+    // in the current bag-only path; re-resolve to tolerate future inventory mutations.
+    CollectItemGuidsVisitor visitor;
     IterateItems(&visitor, ITERATE_ITEMS_IN_BAGS);
 
     ItemIds items;
-    for (auto i = visitor.items.begin(); i != visitor.items.end(); ++i)
+    for (ObjectGuid const guid : visitor.guids)
     {
-        Item* item = *i;
+        Item* item = bot->GetItemByGuid(guid);
         if (!item)
             continue;
 
