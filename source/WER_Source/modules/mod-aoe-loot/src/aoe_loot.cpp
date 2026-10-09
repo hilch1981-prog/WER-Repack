@@ -211,6 +211,36 @@ namespace
             HasSimpleRegularLootRules(item);
     }
 
+    // Rolls and master loot point at rows by index.
+    bool HasPendingRoll(Loot const& loot)
+    {
+        auto isPending = [](LootItem const& item)
+        {
+            return !item.is_looted &&
+                (item.is_blocked || item.rollWinnerGUID);
+        };
+
+        return std::any_of(loot.items.begin(), loot.items.end(), isPending) ||
+            std::any_of(loot.quest_items.begin(), loot.quest_items.end(), isPending);
+    }
+
+    bool IsReservedByGroupLootRules(Player const* player, Loot const& loot, LootItem const& item)
+    {
+        Group const* group = player->GetGroup();
+
+        if (!group || group->GetLootMethod() == FREE_FOR_ALL)
+            return false;
+
+        // Rolls only start when the corpse is first opened.
+        if (group->GetLootMethod() != ROUND_ROBIN && !item.is_underthreshold)
+            return true;
+
+        if (!loot.roundRobinPlayer || loot.roundRobinPlayer == player->GetGUID())
+            return false;
+
+        return group->GetLootMethod() == ROUND_ROBIN || item.is_underthreshold;
+    }
+
     void CompactTransferredRegularLoot(Loot* loot)
     {
         if (!loot ||
@@ -335,6 +365,10 @@ bool AOELootServer::CanPacketReceive(WorldSession* session, WorldPacket const& p
     if (!mainCreature->HasDynamicFlag(UNIT_DYNFLAG_LOOTABLE))
         return true;
 
+    // Preserve skinning and live roll indices on the selected corpse too.
+    if (mainCreature->loot.loot_type == LOOT_SKINNING || HasPendingRoll(mainCreature->loot))
+        return true;
+
     // Get nearby corpses
     std::list<Creature*> nearbyCorpses;
     player->GetDeadCreatureListInGrid(nearbyCorpses, range);
@@ -345,6 +379,8 @@ bool AOELootServer::CanPacketReceive(WorldSession* session, WorldPacket const& p
             return !c ||
                 c->GetGUID() == targetGuid ||
                 !c->HasDynamicFlag(UNIT_DYNFLAG_LOOTABLE) ||
+                c->loot.loot_type == LOOT_SKINNING ||
+                HasPendingRoll(c->loot) ||
                 !player->isAllowedToLoot(c);
         });
 
@@ -427,6 +463,19 @@ bool AOELootServer::CanPacketReceive(WorldSession* session, WorldPacket const& p
             if (!CanSafelySortLootItem(item))
                 continue;
 
+            // Check both ownership contexts before moving the row.
+            if (!item.AllowedForPlayer(player, loot->sourceWorldObjectGUID) ||
+                !item.AllowedForPlayer(player, mainLoot->sourceWorldObjectGUID))
+            {
+                continue;
+            }
+
+            if (IsReservedByGroupLootRules(player, *loot, item) ||
+                IsReservedByGroupLootRules(player, *mainLoot, item))
+            {
+                continue;
+            }
+
             regularCandidates.push_back(
                 { creature, i, item });
         }
@@ -446,6 +495,13 @@ bool AOELootServer::CanPacketReceive(WorldSession* session, WorldPacket const& p
                 questItem.follow_loot_rules ||
                 !questItem.conditions.empty() ||
                 questItem.rollWinnerGUID)
+            {
+                continue;
+            }
+
+            // Filled at the kill for eligible looters. Do not take a party member's quest row.
+            if (!questItem.AllowedForPlayer(player, loot->sourceWorldObjectGUID) ||
+                !questItem.GetAllowedLooters().count(player->GetGUID()))
             {
                 continue;
             }
@@ -611,7 +667,11 @@ bool AOELootServer::CanPacketReceive(WorldSession* session, WorldPacket const& p
             candidate.item.count,
             sourceItem.count);
 
+        // AddItem can return true after storing only part of the requested count.
+        // Reserve enough space for the complete transfer before reducing the source row.
+        ItemPosCountVec dest;
         if (amountToAdd == 0 ||
+            player->CanStoreNewItem(NULL_BAG, NULL_SLOT, dest, sourceItem.itemid, amountToAdd) != EQUIP_ERR_OK ||
             !player->AddItem(
                 sourceItem.itemid,
                 amountToAdd))
