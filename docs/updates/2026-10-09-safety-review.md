@@ -26,6 +26,11 @@
 봇 2,000명 목표 정책, 독립 Ollama 빌드 제외, enhanced-worldchat 비활성, 워밴드 캠프 제외,
 Individual Progression 단계·배율 보류도 그대로입니다. 등록 모듈 18개가 모두 활성이라는 뜻은 아닙니다.
 
+공개 PR에는 읽기 전용 소스 무결성 CI도 포함합니다. 고정 SHA의 공식 `actions/checkout`과
+GitHub 호스팅 runner의 Python만 사용하며, 검사기 7회귀와 12,736파일 매니페스트를 확인합니다.
+권한은 `contents: read`, checkout 자격증명 보존은 끕니다. **게임 빌드·DB·서버·LLM API·배포를 실행하지 않습니다.**
+CI의 실제 성공 여부는 PR의 해당 commit checks를 따르며 로컬 PASS만으로 CI PASS라고 표시하지 않습니다.
+
 ## 출처와 upstream 상태
 
 원 파일의 저작권·GPL/AGPL 고지를 유지합니다. 이 표는 **명시한 SHA의 선별 이식/보완** 기록이며 최신 upstream 전체 교체가 아닙니다.
