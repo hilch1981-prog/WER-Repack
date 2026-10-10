@@ -14,6 +14,11 @@ function PortOpen($Port) {
 }
 function Owned($Name) { ,@(Get-CimInstance Win32_Process -Filter "Name='$Name'" | Where-Object {$_.ExecutablePath -and [IO.Path]::GetFullPath($_.ExecutablePath) -eq [IO.Path]::GetFullPath((Join-Path $Root $(if($Name -eq 'mysqld.exe'){'mysql/bin/mysqld.exe'}else{$Name})))}) }
 function Event($Message) { Add-Content -LiteralPath "$Root/logs/watchdog.log" -Encoding UTF8 -Value ("{0} {1}" -f (Get-Date -Format o),$Message) }
+function FreeCommitMiB {
+    $memory=Get-CimInstance Win32_PerfFormattedData_PerfOS_Memory
+    if(!$memory -or [double]$memory.CommitLimit -le 0 -or [double]$memory.CommittedBytes -lt 0){throw 'Windows commit counters are unavailable; startup was not attempted.'}
+    return [math]::Floor(([double]$memory.CommitLimit-[double]$memory.CommittedBytes)/1MB)
+}
 function InvokePrivateSql($Text,[switch]$Initial) {
     $i=New-Object Diagnostics.ProcessStartInfo
     $i.FileName="$Root/mysql/bin/mysql.exe"
@@ -60,6 +65,12 @@ function AssertPrivateMysql([switch]$Initial) {
 function Sql($Text,[switch]$Initial) {
     AssertPrivateMysql -Initial:$Initial
     return InvokePrivateSql $Text -Initial:$Initial
+}
+function ApplyReleaseMigrations {
+    if((Owned 'worldserver.exe').Count){throw '월드 서버 종료 후 DB 업데이트를 진행하세요.'}
+    . (Join-Path $PSScriptRoot 'wer-migrate-rc3.ps1')
+    $migration=Invoke-WerRc3Migration -MigrationDirectory (Join-Path $PSScriptRoot 'migrations/rc3') -BackupDirectory (Join-Path $Root 'logs/migrations')
+    Event ('RC3 migration receipt='+$migration.receipt)
 }
 function SetConf($Path,$Key,$Value) {
     $s=[IO.File]::ReadAllText($Path,$Utf8)
@@ -123,6 +134,7 @@ try {
         if((Owned 'authserver.exe').Count -or (Owned 'worldserver.exe').Count){throw '게임 서버가 실행 중입니다. 먼저 정상 종료하세요.'}
         StartMysql
         Configure
+        ApplyReleaseMigrations
         [void](Sql 'SHUTDOWN;')
         $until=(Get-Date).AddSeconds(60)
         while((Owned 'mysqld.exe').Count){if((Get-Date) -gt $until){throw '초기 준비용 MySQL 종료가 지연됩니다. 로그를 확인하세요.'};Start-Sleep -Milliseconds 500}
@@ -135,11 +147,12 @@ try {
             if((Owned 'authserver.exe').Count -or (PortOpen $Cfg.AuthPort)){throw '로그인 서버가 이미 실행 중이거나 포트가 사용 중입니다.'}
             if((Owned 'worldserver.exe').Count){throw '월드가 실행 중입니다. 월드 종료 후 로그인→월드 순서로 시작하세요.'}
             Configure
+            ApplyReleaseMigrations
         } else {
             if(!(Owned 'authserver.exe').Count -or !(PortOpen $Cfg.AuthPort)){throw '먼저 2_AUTHSERVER.bat을 실행하세요.'}
             if((Owned 'worldserver.exe').Count -or (PortOpen $Cfg.WorldPort)){throw '월드 서버가 이미 실행 중이거나 포트가 사용 중입니다.'}
-            $freeMB=[int]((Get-CimInstance Win32_OperatingSystem).FreeVirtualMemory/1024);$need=8192
-            if($Cfg.PSObject.Properties.Name -contains 'MinFreeCommitMB'){$need=[math]::Max(6144,[int]$Cfg.MinFreeCommitMB)}
+            $freeMB=FreeCommitMiB;$need=16384
+            if($Cfg.PSObject.Properties.Name -contains 'MinFreeCommitMB'){$need=[math]::Max(16384,[int]$Cfg.MinFreeCommitMB)}
             if($freeMB -lt $need){throw "월드 시작에 커밋 여유 $need MB가 필요합니다. 현재 $freeMB MB입니다."}
         }
     }

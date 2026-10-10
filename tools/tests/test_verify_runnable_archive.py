@@ -15,7 +15,7 @@ SPEC.loader.exec_module(MODULE)
 
 
 class RuntimeArchiveTests(unittest.TestCase):
-    def run_fixture(self, mutation=None, bad_checksums=False):
+    def run_fixture(self, mutation=None, bad_checksums=False, version=None):
         names = [
             "authserver.exe", "worldserver.exe", "map_extractor.exe", "vmap4_extractor.exe",
             "vmap4_assembler.exe", "mmaps_generator.exe", "mmaps-config.yaml",
@@ -31,7 +31,7 @@ class RuntimeArchiveTests(unittest.TestCase):
         if mutation:
             mutation(payload)
         rows = [{"path": name, "size": len(content), "sha256": hashlib.sha256(content).hexdigest()} for name, content in sorted(payload.items())]
-        payload["REPACK_MANIFEST.json"] = json.dumps({"files": rows}).encode()
+        payload["REPACK_MANIFEST.json"] = json.dumps({"files": rows, "version": version}).encode()
         checksum_text = "".join(hashlib.sha256(content).hexdigest() + "  " + name + "\n" for name, content in sorted(payload.items()))
         payload["SHA256SUMS.txt"] = ("invalid" if bad_checksums else checksum_text).encode()
         with tempfile.TemporaryDirectory() as temporary:
@@ -69,6 +69,32 @@ class RuntimeArchiveTests(unittest.TestCase):
 
     def test_bad_checksums_are_rejected(self):
         self.assertEqual(self.run_fixture(bad_checksums=True), 1)
+
+    @staticmethod
+    def rc3_payload(payload):
+        package = Path(__file__).parents[2] / "source/packaging/runtime_rc2"
+        payload["scripts/wer-migrate-rc3.ps1"] = (package / "wer-migrate-rc3.ps1").read_bytes()
+        for path in (package / "migrations/rc3").glob("*.sql"):
+            payload["scripts/migrations/rc3/" + path.name] = path.read_bytes()
+        payload["scripts/settings.json"] = b'{"RealmAddress":"auto","MySqlPort":3306,"MinFreeCommitMB":16384}'
+
+    def test_complete_rc3_payload(self):
+        self.assertEqual(self.run_fixture(self.rc3_payload, version="1.1.1-rc.3"), 0)
+
+    def test_rc3_missing_migrations_rejected(self):
+        self.assertEqual(self.run_fixture(version="1.1.1-rc.3"), 1)
+
+    def test_rc3_tampered_sql_rejected(self):
+        def altered(payload):
+            self.rc3_payload(payload)
+            payload["scripts/migrations/rc3/01_equipment_notice_koKR.sql"] += b"-- tampered"
+        self.assertEqual(self.run_fixture(altered, version="1.1.1-rc.3"), 1)
+
+    def test_rc3_lowered_commit_guard_rejected(self):
+        def altered(payload):
+            self.rc3_payload(payload)
+            payload["scripts/settings.json"] = b'{"RealmAddress":"auto","MySqlPort":3306,"MinFreeCommitMB":8192}'
+        self.assertEqual(self.run_fixture(altered, version="1.1.1-rc.3"), 1)
 
 
 if __name__ == "__main__":

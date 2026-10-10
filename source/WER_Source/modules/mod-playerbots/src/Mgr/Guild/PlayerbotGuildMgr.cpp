@@ -47,6 +47,8 @@ bool PlayerbotGuildMgr::CreateGuild(Player* player, std::string guildName)
     entry.faction = player->GetTeamId();
 
     _guildCache[guild->GetId()] = entry;
+    // Reserve the name immediately, including before a bot of the other faction arrives.
+    OnGuildUpdate(guild);
     return true;
 }
 

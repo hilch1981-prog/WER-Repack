@@ -1,0 +1,22 @@
+{
+  "release": "v1.1.1-rc.3",
+  "verified_kst": "2026-10-10T10:53:10+09:00",
+  "core_source_files": 12736,
+  "core_source_manifest_sha256": "37c3cc43e969babbf9d3e21f51755b76af4b2ed05d82c07122a0c03f1cbca683",
+  "native_build": "MSVC2022 x64 Release: six final executables LINK_PASS",
+  "worldserver_sha256": "940ef5cb6aacf3640fa75139362bf16a209b58f8036cfb05f4e0ad3e33b51a8e",
+  "authserver_sha256": "ae89446b53a308211e168f600b6fa683f835c990013ea7513d35f2a8fb45e87c",
+  "protocol_tests": {"transport": "Radmin", "passed": 34, "failed": 0, "soft_pass": false, "configured_random_bots": 20, "live_llm": false},
+  "migration_first_affected_rows": {"equipment": 1, "duration": 2, "npc": 1},
+  "migration_second_affected_rows": {"equipment": 0, "duration": 0, "npc": 0},
+  "fresh_install": {"shell": "Windows PowerShell 5.1", "path": "Korean and spaces", "first_exit": 0, "restart_exit": 0, "database_reinitialized": false, "migrations_repeated_rows": 0, "private_mysql_shutdown": "normal", "note": "Initial diagnostic failed on Get-FileHash module autoload; migration now uses .NET SHA256. A new clean fixture passed both runs."},
+  "local_safety_unit_tests": {"source_manifest": 7, "runtime_archive": 12, "console_database_guards": 13, "migration_and_commit_guards": 9},
+  "previous_candidate_proof_retained": {"sql_rollback_fixture_assertions": 28, "native_korean_renderer_assertions": 6},
+  "operational_application": "Backed up stopped private DB and binaries; applied three guarded migrations and new server binaries; account/character/guild counts and configuration hashes preserved. No private data bundled.",
+  "operational_start": "NOT_STARTED: actual free commit below 16384 MiB; 2000-bot target preserved",
+  "unverified": ["2000 simultaneous sustained online bots", "graphical-client full gameplay", "live provider LLM", "all raid mechanics", "complete guild-bank behavior"],
+  "original_releases_preserved": true,
+  "client_data_included": false,
+  "private_database_included": false,
+  "api_key_included": false
+}

@@ -17,6 +17,8 @@
 
 ## 빌드 환경
 
+**최신 실행 rc.3(2026-10-10)**은 아래 rc.2 변경을 계승하고 길드 이름 캐시·펫 기본 이동 C++2개와 버전 배너를 추가 수정했습니다. 현재 전체 manifest를 실제 빌드 입력과 대조하고6종을 링크했습니다. 자동 DB이관 SQL·실행기 변경은 `packaging/runtime_rc2`에 있으며 코어 manifest가 아닌 저장소 Git 이력으로 관리합니다. [RC3 검증 범위](../docs/releases/v1.1.1-rc.3.md), [옵션 원장](../docs/releases/OPTIONS_rc3.md)을 확인하세요.
+
 실행 `v1.1.1-rc.2`는 19파일 안전성 수정과 갱신된 `Banner.cpp`를 포함합니다. [실행·검증 설명](../docs/releases/v1.1.1-rc.2.md)을 확인하세요. `WER_20261009_SAFETY_DELTA.json`은 이전 19파일 검토 기록이며 버전 배너 변경은 별도입니다. 현재 전체 원장은 `SOURCE_MANIFEST.json`입니다. 새 실행 ZIP에 전체 소스·게임 데이터를 넣지 않습니다.
 
 Visual Studio 2022 C++ x64 도구/MSVC 14.44, Windows SDK, CMake, Boost 1.84.0(msvc14.3), OpenSSL 4.x, MySQL 8.4.9 개발 헤더/라이브러리가 기준입니다. 정확한 소스는 현재 폴더를 사용합니다.
