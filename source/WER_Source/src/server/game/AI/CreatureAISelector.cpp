@@ -92,7 +92,9 @@ namespace FactorySelector
     {
         MovementGeneratorType type = IDLE_MOTION_TYPE;
         if (Creature* creature = unit->ToCreature())
-            if (!creature->GetCharmerOrOwnerPlayerOrPlayerItself())
+            // A newly tamed pet can enter the map before SetMinion links its owner GUID.
+            // It must not inherit the wild creature's default waypoint movement meanwhile.
+            if (!creature->IsPet() && !creature->GetCharmerOrOwnerPlayerOrPlayerItself())
                 type = creature->GetDefaultMovementType();
 
         MovementGeneratorCreator const* mv_factory = sMovementGeneratorRegistry->GetRegistryItem(type);

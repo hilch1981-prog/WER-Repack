@@ -39,3 +39,6 @@ jobs:
       - name: Test isolated SQL guards without a real database
         shell: powershell
         run: ./tools/tests/test_console_db_guards.ps1
+      - name: Test RC3 migration failure paths and commit-capacity guard
+        shell: powershell
+        run: ./tools/tests/test_rc3_migration.ps1

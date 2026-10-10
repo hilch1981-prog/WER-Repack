@@ -15,11 +15,11 @@ The banner's expansion cards do not indicate support for expansions other than t
 > The existing **v1.1.0 Windows repack** was produced on **September 21, 2026**.
 > The **October 9, 2026 source update** is newer than its executables and source ZIP.
 > [Read the update and validation limits](docs/updates/2026-10-09-safety-review.en.md).
-> Isolated world startup and 27 real protocol tests on the final executables have passed; graphical gameplay, sustained 2,000-bot load, live LLM and production readiness remain separate.
+> RC3 full linking, isolated world startup and **34 real protocol tests** passed. The private operational copy's DB/files were updated after backup; startup remains held below the memory safety threshold. Graphical gameplay, sustained 2,000-bot load and live LLM remain unverified.
 
 > **Source prerelease:** [v1.1.1-rc.1](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.1) · [Korean / English release notes](docs/releases/v1.1.1-rc.1.md).
-> rc.1 remains source-only. **New runnable prerelease:** [v1.1.1-rc.2](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.2) · [release/validation notes](docs/releases/v1.1.1-rc.2.md) · [quick start](docs/INSTALL.rc2.md).
-> rc.2 excludes game data: [extract from your own lawful client](docs/DATA_EXTRACTION.md). Existing stable v1.1.0 is preserved.
+> rc.1 remains source-only. **New runnable prerelease (October10,2026):** [v1.1.1-rc.3](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.1-rc.3) · [release/validation notes](docs/releases/v1.1.1-rc.3.md) · [quick start](docs/INSTALL.rc3.md).
+> rc.3 excludes game data: [extract from your own lawful client](docs/DATA_EXTRACTION.md). Existing rc.2 and stable v1.1.0 are preserved.
 
 > [!WARNING]
 > **🟨 Try NVIDIA-powered LLM bot conversations — a key WER feature.**
@@ -30,7 +30,7 @@ The banner's expansion cards do not indicate support for expansions other than t
 
 ## Download the right package
 
-- **New updated executable package:** rc.2 `WER_REPACK_VER.1.1.1-rc.2.zip`. Matching full source is a separate `WER_Source_v1.1.1-rc.2.zip`; game data is not bundled. Fresh-install prerelease, not a sustained-load certification or an in-place update.
+- **New updated executable package:** rc.3 `WER_REPACK_VER.1.1.1-rc.3.zip`. Matching full source is a separate `WER_Source_v1.1.1-rc.3.zip`; game data is not bundled. Includes guild-name reservation, pet movement and guarded Korean DB fixes. Fresh-install prerelease, not a sustained-load certification or an in-place update.
 - **Runnable server:** [v1.1.0 release](https://github.com/hilch1981-prog/WER-Repack/releases/tag/v1.1.0), asset **`WER_REPACK_VER.1.1.0.zip`**. Extract the complete ZIP into a new folder.
 - **Source matching v1.1.0 executables:** that release's `WER_Source.zip` or the [v1.1.0 source tag](https://github.com/hilch1981-prog/WER-Repack/tree/v1.1.0/source/WER_Source).
 - **Updated source:** [source/WER_Source](source/WER_Source). It includes the 19-file safety update; **it does not match the old executable ZIP byte-for-byte**.

@@ -5,5 +5,6 @@
   "DbPassword": "wer-local-only",
   "RealmAddress": "auto",
   "BindIP": "0.0.0.0",
-  "RestartDelay": 15
+  "RestartDelay": 15,
+  "MinFreeCommitMB": 16384
 }

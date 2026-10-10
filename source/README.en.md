@@ -2,6 +2,8 @@
 
 [한국어](README.md) · **English**
 
+**Latest runnable RC3 (October10,2026)** inherits RC2 and adds two C++ fixes (guild-name reservation and pet default movement) plus version branding. All six native targets were linked against the current12,736-file manifest. Automatic database migrations/launcher changes live under the historically named `packaging/runtime_rc2` and are versioned by Git outside the core manifest. See [RC3 evidence](../docs/releases/v1.1.1-rc.3.md) and [option ledger](../docs/releases/OPTIONS_rc3.md). Older proof below remains historical, not RC3 certification.
+
 The **v1.1.0 tag** contains the integrated source corresponding to the existing Windows repack.
 The updated source contains the October 9 safety changes and **does not match the older release EXEs/source ZIP**.
 The first publication is a distribution snapshot, not a substitute for upstream development history.

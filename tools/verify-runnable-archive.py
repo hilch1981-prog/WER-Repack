@@ -88,6 +88,25 @@ def verify(archive_path):
         settings = json.loads(archive.read(prefix + "scripts/settings.json"))
         if settings["RealmAddress"] != "auto" or settings["MySqlPort"] != 3306:
             errors.append("operator/test endpoint leaked into defaults")
+        if manifest.get("version") == "1.1.1-rc.3":
+            migration_hashes = {
+                "01_equipment_notice_koKR.sql": "0a600c16cd3dca590255b0ae2234271de621454c52aaaa0924faf68f033c745d",
+                "02_duration_custom_flags.sql": "68d9c92b86cfaf9a83434fbabe199ad1899368ab8d2c312b3d657c9c8abc7d1d",
+                "03_eye_missing_path_idle.sql": "76d74f5f5c6d5312d4bd2699228058e1b4e407f41c3961b1d8149e42f048b800",
+            }
+            rc3_required = {"scripts/wer-migrate-rc3.ps1"}
+            rc3_required.update("scripts/migrations/rc3/" + name for name in migration_hashes)
+            rc3_required.update("scripts/migrations/rc3/" + name for name in (
+                "rollback_equipment_notice_koKR.sql", "rollback_duration_custom_flags.sql",
+                "rollback_eye_missing_path_idle.sql",
+            ))
+            errors.extend("missing RC3 migration: " + name for name in sorted(rc3_required - relative_files))
+            for name, expected in migration_hashes.items():
+                relative = "scripts/migrations/rc3/" + name
+                if relative in relative_files and hashlib.sha256(archive.read(prefix + relative)).hexdigest() != expected:
+                    errors.append("RC3 migration hash mismatch: " + name)
+            if settings.get("MinFreeCommitMB", 0) < 16384:
+                errors.append("RC3 free-commit safety threshold missing or lowered")
         for name in launchers:
             text = archive.read(prefix + name).decode("utf-8-sig")
             if "start /b" in text.lower() or "start-process" in text.lower():
