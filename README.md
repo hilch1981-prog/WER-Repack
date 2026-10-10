@@ -21,7 +21,7 @@
 
 ![와우 에뮬레이터 연구소 — WOW Emulator Research (WER)](docs/images/wer-research-banner.png)
 
-*사용자가 제공한 연구소 소개 이미지입니다. 이미지의 확장팩 카드와 별개로 이 배포본의 대상은 리치왕 3.3.5a입니다.*
+*와우 에뮬레이터 연구소의 WER Repack 배너입니다. 이 배포본의 대상은 리치왕 3.3.5a입니다.*
 
 **와우 리치왕 3.3.5a · 빌드 12340 · 한국어(koKR) · Windows x64**  
 **와우 에뮬레이터 연구소 — WOW Emulator Research (WER) / 기존 v1.1.0: 2026-09-21, 실행 rc.3: 2026-10-10**
