@@ -9,7 +9,7 @@
 WER stands for **WOW Emulator Research**, the name of 와우 에뮬레이터 연구소.
 This is a Korean-localized research repack integrating AzerothCore, Playerbots, WOW Legends-based source and community modules.
 WER credits the original developers; it is not an official Blizzard product or an affiliated service.
-The banner's expansion cards do not indicate support for expansions other than this WotLK client.
+The WER Repack banner represents WOW Emulator Research; this repack targets only the WotLK client listed above.
 
 > [!IMPORTANT]
 > The existing **v1.1.0 Windows repack** was produced on **September 21, 2026**.
